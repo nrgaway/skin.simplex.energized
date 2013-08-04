@@ -98,7 +98,7 @@
 					<font>info1</font>
 					<align>right</align>
 					<colordiffuse>d0FfFFFF</colordiffuse>
-					<label>$INFO[MusicPlayer.Duration]</label>
+					<label>$INFO[MusicPlayer.DurationStr]</label>
 				</control>
 				<control type="progress" id="21">
 					<description>Progress control</description>
@@ -222,7 +222,7 @@
 					<font>info1</font>
 					<align>right</align>
 					<colordiffuse>d0FfFFFF</colordiffuse>
-					<label>$INFO[MusicPlayer.Duration]</label>
+					<label>$INFO[MusicPlayer.DurationStr]</label>
 				</control>
 				<control type="progress" id="21">
 					<description>Progress control</description>

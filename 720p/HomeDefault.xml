@@ -48,7 +48,7 @@
 					<include>FullScreenBGImage</include>
 				</control>
 				<control type="group">
-					<visible>!Skin.HasSetting(HideHomeSlideshow)</visible>
+					<visible>Skin.HasSetting(HideHomeSlideshow)</visible>
 					<control type="multiimage">
 						<posx>0</posx>
 						<posy>-50</posy>

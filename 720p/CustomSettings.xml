@@ -277,6 +277,25 @@
 				<onup>120</onup>
 				<ondown>120</ondown>
 				<orientation>vertical</orientation>
+				<control type="radiobutton" id="12005">
+					<width>770</width>
+					<font>list1</font>
+					<textcolor>White</textcolor>
+					<focusedcolor>Orange</focusedcolor>
+					<texturenofocus>-</texturenofocus>
+					<texturefocus>button_settings_wide.png</texturefocus>
+					<height>54</height>
+					<align>left</align>
+					<aligny>center</aligny>
+					<textoffsety>0</textoffsety>
+					<textoffsetx>30</textoffsetx>
+					<pulseonselect>false</pulseonselect>
+					<radioposx>726</radioposx>
+					<!-- TODO: Localize -->
+					<label>Enable Media Flags in Info Area</label>
+					<onclick>Skin.ToggleSetting(EnableMediaFlags)</onclick>
+					<selected>Skin.HasSetting(EnableMediaFlags)</selected>
+				</control>
 				<control type="radiobutton" id="12000">
 					<width>770</width>
 					<font>list1</font>
@@ -371,25 +390,6 @@
 					<label>Hide Text Ratings on Movie List</label>
 					<onclick>Skin.ToggleSetting(HideMovieListTextRatings)</onclick>
 					<selected>Skin.HasSetting(HideMovieListTextRatings)</selected>
-				</control>
-				<control type="radiobutton" id="12005">
-					<width>770</width>
-					<font>list1</font>
-					<textcolor>White</textcolor>
-					<focusedcolor>Orange</focusedcolor>
-					<texturenofocus>-</texturenofocus>
-					<texturefocus>button_settings_wide.png</texturefocus>
-					<height>54</height>
-					<align>left</align>
-					<aligny>center</aligny>
-					<textoffsety>0</textoffsety>
-					<textoffsetx>30</textoffsetx>
-					<pulseonselect>false</pulseonselect>
-					<radioposx>726</radioposx>
-					<!-- TODO: Localize -->
-					<label>Hide Media Flags in Info Area</label>
-					<onclick>Skin.ToggleSetting(HideMediaFlags)</onclick>
-					<selected>Skin.HasSetting(HideMediaFlags)</selected>
 				</control>
 				<control type="radiobutton" id="12006">
 					<width>770</width>

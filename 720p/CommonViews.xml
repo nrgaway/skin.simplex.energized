@@ -15,7 +15,7 @@
 						<posy>78</posy>
 						<width>40</width>
 						<height>40</height>
-						<info>Listitem.Property(mediaTag::contentRating)</info>
+						<info>Listitem.Art(mediaTag::contentRating)</info>
 						<colordiffuse>DarkGray</colordiffuse>
 					</control>
 					<control type="image">
@@ -24,7 +24,7 @@
 						<posy>78</posy>
 						<width>40</width>
 						<height>40</height>
-						<info>Listitem.Property(mediaTag::contentRating)</info>
+						<info>Listitem.Art(mediaTag::contentRating)</info>
 						<colordiffuse>DarkGray</colordiffuse>
 					</control>
 					<control type="image">
@@ -33,7 +33,7 @@
 						<posy>77</posy>
 						<width>40</width>
 						<height>40</height>
-						<info>Listitem.Property(mediaTag::contentRating)</info>
+						<info>Listitem.Art(mediaTag::contentRating)</info>
 						<colordiffuse>DarkGray</colordiffuse>
 					</control>
 					<control type="image">
@@ -42,7 +42,7 @@
 						<posy>79</posy>
 						<width>40</width>
 						<height>40</height>
-						<info>Listitem.Property(mediaTag::contentRating)</info>
+						<info>Listitem.Art(mediaTag::contentRating)</info>
 						<colordiffuse>DarkGray</colordiffuse>
 					</control>
 					<control type="image">
@@ -51,7 +51,7 @@
 						<posy>78</posy>
 						<width>40</width>
 						<height>40</height>
-						<info>Listitem.Property(mediaTag::contentRating)</info>
+						<info>Listitem.Art(mediaTag::contentRating)</info>
 						<colordiffuse>White</colordiffuse>
 					</control>
 				</control>
@@ -208,7 +208,7 @@
 						<posy>514</posy>
 						<width>598</width>
 						<height>20</height>
-						<info>Listitem.Property(mediaTag::contentRating)</info>
+						<info>Listitem.Art(mediaTag::contentRating)</info>
 						<aspectratio aligny="bottom" align="right">keep</aspectratio>
 						<colordiffuse>Gray</colordiffuse>
 					</control>
@@ -253,7 +253,7 @@
 						<posy>470</posy>
 						<width>598</width>
 						<height>20</height>
-						<info>Listitem.Property(mediaTag::contentRating)</info>
+						<info>Listitem.Art(mediaTag::contentRating)</info>
 						<aspectratio aligny="bottom" align="right">keep</aspectratio>
 					</control>
 					<!-- Current Thumb -->
@@ -414,7 +414,7 @@
 						</control>
 						<control type="label">
 							<description>Duration</description>
-							<label> &#xB7; $INFO[ListItem.Duration]</label>
+							<label> &#xB7; $INFO[ListItem.DurationStr]</label>
 							<align>left</align>
 							<aligny>center</aligny>
 							<width min="1" max="100">auto</width>
@@ -423,7 +423,7 @@
 							<textcolor>Gray</textcolor>
 							<shadowcolor>Shadow</shadowcolor>
 							<wrapmultiline>false</wrapmultiline>
-							<visible>!IsEmpty(ListItem.Duration)</visible>
+							<visible>!IsEmpty(ListItem.DurationStr)</visible>
 						</control>
 						<control type="label">
 							<description>Genre</description>
@@ -436,7 +436,7 @@
 							<textcolor>Gray</textcolor>
 							<shadowcolor>Shadow</shadowcolor>
 							<wrapmultiline>false</wrapmultiline>
-							<visible>!IsEmpty(ListItem.Duration)</visible>
+							<visible>!IsEmpty(ListItem.DurationStr)</visible>
 						</control>
 					</control>
 					<control type="label">
@@ -544,7 +544,7 @@
 						</control>
 						<control type="label">
 							<description>Duration</description>
-							<label> &#xB7; $INFO[ListItem.Duration]</label>
+							<label> &#xB7; $INFO[ListItem.DurationStr]</label>
 							<align>left</align>
 							<aligny>center</aligny>
 							<width min="1" max="100">auto</width>
@@ -552,7 +552,7 @@
 							<font>heading3</font>
 							<textcolor>Gray</textcolor>
 							<shadowcolor>Shadow</shadowcolor>
-							<visible>!IsEmpty(ListItem.Duration)</visible>
+							<visible>!IsEmpty(ListItem.DurationStr)</visible>
 						</control>
 						<control type="label">
 							<description>Genre</description>
@@ -565,7 +565,7 @@
 							<textcolor>Gray</textcolor>
 							<shadowcolor>Shadow</shadowcolor>
 							<wrapmultiline>false</wrapmultiline>
-							<visible>!IsEmpty(ListItem.Duration)</visible>
+							<visible>!IsEmpty(ListItem.DurationStr)</visible>
 						</control>
 					</control>
 					<control type="label">
@@ -694,11 +694,11 @@
 							<font>heading3</font>
 							<textcolor>Gray</textcolor>
 							<shadowcolor>Shadow</shadowcolor>
-							<visible>!IsEmpty(ListItem.Date) + !IsEmpty(ListItem.Duration)</visible>
+							<visible>!IsEmpty(ListItem.Date) + !IsEmpty(ListItem.DurationStr)</visible>
 						</control>
 						<control type="label">
 							<description>Duration</description>
-							<label>$INFO[ListItem.Duration]</label>
+							<label>$INFO[ListItem.DurationStr]</label>
 							<align>left</align>
 							<aligny>center</aligny>
 							<width min="1" max="200">auto</width>
@@ -706,7 +706,7 @@
 							<font>heading3</font>
 							<textcolor>Gray</textcolor>
 							<shadowcolor>Shadow</shadowcolor>
-							<visible>!IsEmpty(ListItem.Duration)</visible>
+							<visible>!IsEmpty(ListItem.DurationStr)</visible>
 						</control>
 					</control>
 					<control type="label">
@@ -805,7 +805,7 @@
 			</control>
 			<!-- Media flags -->
 			<control type="group">
-				<visible>!Skin.HasSetting(HideMediaFlags)</visible>
+				<visible>Skin.HasSetting(EnableMediaFlags)</visible>
 				<posx>-687</posx>
 				<posy>681</posy>
 				<control type="grouplist">
@@ -813,50 +813,50 @@
 					<itemgap>15</itemgap>
 					<align>right</align>
 					<control type="image">
-						<visible>!IsEmpty(Listitem.Property(mediaTag::videoResolution))</visible>
+						<visible>!IsEmpty(Listitem.Art(mediaTag::videoResolution))</visible>
 						<height>18</height>
 						<width min="1" max="95">auto</width>
-						<info>Listitem.Property(mediaTag::videoResolution)</info>
+						<info>Listitem.Art(mediaTag::videoResolution)</info>
 						<aspectratio>keep</aspectratio>
 						<colordiffuse>DarkGray</colordiffuse>
 					</control>
 					<control type="image">
-						<visible>!IsEmpty(Listitem.Property(mediaTag::aspectRatio))</visible>
+						<visible>!IsEmpty(Listitem.Art(mediaTag::aspectRatio))</visible>
 						<height>18</height>
 						<width min="1" max="95">auto</width>
-						<info>Listitem.Property(mediaTag::aspectRatio)</info>
+						<info>Listitem.Art(mediaTag::aspectRatio)</info>
 						<aspectratio>keep</aspectratio>
 						<colordiffuse>DarkGray</colordiffuse>
 					</control>
 					<control type="image">
-						<visible>!IsEmpty(Listitem.Property(mediaTag::videoCodec))</visible>
+						<visible>!IsEmpty(Listitem.Art(mediaTag::videoCodec))</visible>
 						<height>18</height>
 						<width min="1" max="95">auto</width>
-						<info>Listitem.Property(mediaTag::videoCodec)</info>
+						<info>Listitem.Art(mediaTag::videoCodec)</info>
 						<colordiffuse>DarkGray</colordiffuse>
 						<aspectratio>keep</aspectratio>
 					</control>
 					<control type="image">
-						<visible>!IsEmpty(Listitem.Property(mediaTag::videoFrameRate))</visible>
+						<visible>!IsEmpty(Listitem.Art(mediaTag::videoFrameRate))</visible>
 						<height>18</height>
 						<width min="1" max="95">auto</width>
-						<info>Listitem.Property(mediaTag::videoFrameRate)</info>
+						<info>Listitem.Art(mediaTag::videoFrameRate)</info>
 						<aspectratio>keep</aspectratio>
 						<colordiffuse>DarkGray</colordiffuse>
 					</control>
 					<control type="image">
-						<visible>!IsEmpty(Listitem.Property(mediaTag::audioCodec))</visible>
+						<visible>!IsEmpty(Listitem.Art(mediaTag::audioCodec))</visible>
 						<height>18</height>
 						<width min="1" max="95">auto</width>
-						<info>Listitem.Property(mediaTag::audioCodec)</info>
+						<info>Listitem.Art(mediaTag::audioCodec)</info>
 						<aspectratio>keep</aspectratio>
 						<colordiffuse>DarkGray</colordiffuse>
 					</control>
 					<control type="image">
-						<visible>!IsEmpty(Listitem.Property(mediaTag::audioChannels))</visible>
+						<visible>!IsEmpty(Listitem.Art(mediaTag::audioChannels))</visible>
 						<height>18</height>
 						<width min="1" max="95">auto</width>
-						<info>Listitem.Property(mediaTag::audioChannels)</info>
+						<info>Listitem.Art(mediaTag::audioChannels)</info>
 						<aspectratio>keep</aspectratio>
 						<colordiffuse>DarkGray</colordiffuse>
 					</control>

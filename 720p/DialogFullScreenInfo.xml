@@ -217,7 +217,7 @@
 						</control-->
 						<!-- Duration -->
 						<control type="label">
-							<visible>!IsEmpty(VideoPlayer.Duration)</visible>
+							<visible>!IsEmpty(VideoPlayer.DurationStr)</visible>
 							<description>Duration</description>
 							<posx>0r</posx>
 							<posy>11</posy>
@@ -225,7 +225,7 @@
 							<align>right</align>
 							<aligny>bottom</aligny>
 							<!-- TODO: Localize -->
-							<label>Duration: $INFO[VideoPlayer.Duration]</label>
+							<label>Duration: $INFO[VideoPlayer.DurationStr]</label>
 							<font>heading3</font>
 							<textcolor>White</textcolor>
 							<shadowcolor>Shadow</shadowcolor>

@@ -6,7 +6,7 @@
 		<control type="group">
 			<!--visible>IsEmpty(Container.Property(mixedParents))</visible-->
 			<control type="group" id="33">
-				<visible>!Container.Content(episodes)</visible>
+				<visible>!Container.Content(episodes) + !Container.Content(songs)</visible>
 				<control type="label">
 					<width>395</width>
 					<height>50</height>
@@ -106,7 +106,7 @@
 		<control type="group">
 			<!--visible>IsEmpty(Container.Property(mixedParents))</visible-->
 			<control type="group">
-				<visible>!Container.Content(episodes)</visible>
+				<visible>!Container.Content(episodes) + !Container.Content(songs)</visible>
 				<control type="label">
 					<width>395</width>
 					<height>50</height>
@@ -462,7 +462,7 @@
 			<font>plot1</font>
 			<textcolor>DarkGray</textcolor>
 			<shadowcolor>Shadow</shadowcolor>
-			<info>ListItem.Duration</info>
+			<info>ListItem.DurationStr</info>
 			<animation effect="fade" start="100" end="0" time="100" delay="100" reversible="false">Focus</animation>
 		</control>
 	</include>
@@ -477,7 +477,7 @@
 			<font>plot1</font>
 			<textcolor>Gray</textcolor>
 			<shadowcolor>Shadow</shadowcolor>
-			<info>ListItem.Duration</info>
+			<info>ListItem.DurationStr</info>
 			<animation effect="fade" start="0" end="100" time="100" delay="100" reversible="false" condition="Container().OnNext">Focus</animation>
 			<animation effect="fade" start="0" end="100" time="100" delay="100" reversible="false" condition="Container().OnPrevious">Focus</animation>
 		</control>
