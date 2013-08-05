@@ -26,7 +26,7 @@
 				<onup>300</onup>
 				<width>1190</width>
 				<height>340</height>
-				<posy>21</posy>
+				<posy>33</posy>
 				<posx>0</posx>
 				<include>RecentlyAddedLayout</include>
 			</control>
@@ -58,7 +58,7 @@
 				<onup>300</onup>
 				<width>1190</width>
 				<height>340</height>
-				<posy>21</posy>
+				<posy>33</posy>
 				<posx>0</posx>
 				<include>RecentlyUsedLayout</include>
 			</control>
@@ -88,7 +88,7 @@
 				<onup>300</onup>
 				<width>1190</width>
 				<height>340</height>
-				<posy>21</posy>
+				<posy>33</posy>
 				<posx>0</posx>
 				<include>OnDeckLayout</include>
 			</control>
@@ -119,7 +119,7 @@
 				<onup>300</onup>
 				<width>1190</width>
 				<height>340</height>
-				<posy>21</posy>
+				<posy>33</posy>
 				<posx>0</posx>
 				<include>OnDeckLayout</include>
 			</control>
@@ -149,7 +149,7 @@
 				<onup>11001</onup>
 				<width>1190</width>
 				<height>340</height>
-				<posy>21</posy>
+				<posy>33</posy>
 				<posx>0</posx>
 				<include>RecentlyAddedLayout</include>
 			</control>
@@ -179,7 +179,7 @@
 				<onup>300</onup>
 				<width>1190</width>
 				<height>340</height>
-				<posy>21</posy>
+				<posy>33</posy>
 				<posx>0</posx>
 				<include>RecentlyAddedLayout</include>
 			</control>
@@ -209,7 +209,7 @@
 				<onup>11000</onup>
 				<width>1190</width>
 				<height>340</height>
-				<posy>21</posy>
+				<posy>33</posy>
 				<posx>0</posx>
 				<include>OnDeckLayout</include>
 			</control>
@@ -298,6 +298,15 @@
 	<include name="OnDeckLayout">
 		<itemlayout width="169" height="280" condition="Container(11001).ListItem(0).Type(movie)">
 			<control type="group">
+				<!-- in progress -->
+				<control type="image">
+					<visible>ListItem.Status(InProgress)</visible>
+					<posx>67</posx>
+					<posy>5</posy>
+					<height>35</height>
+					<width>35</width>
+					<info>ListItem.Overlay</info>
+				</control>
 				<control type="image">
 					<posx>19</posx>
 					<posy>219</posy>
@@ -307,6 +316,18 @@
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				</control>
 				<control type="image">
+					<visible>[!Control.HasFocus(300)]</visible>
+					<posx>19</posx>
+					<posy>19</posy>
+					<width>134</width>
+					<height>200</height>
+					<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
+					<texture diffuse="diffuse_poster_home.png">$INFO[ListItem.Thumb]</texture>
+					<bordertexture>border_poster_home.png</bordertexture>
+					<colordiffuse>FFAAAAAA</colordiffuse>
+				</control>
+				<control type="image">
+					<visible>[Control.HasFocus(300)]</visible>
 					<posx>19</posx>
 					<posy>19</posy>
 					<width>134</width>
@@ -330,6 +351,15 @@
 		</itemlayout>
 		<itemlayout width="169" height="280" condition="Container(11001).ListItem(0).Type(episode)">
 			<control type="group">
+				<!-- in progress -->
+				<control type="image">
+					<visible>ListItem.Status(InProgress)</visible>
+					<posx>67</posx>
+					<posy>5</posy>
+					<height>35</height>
+					<width>35</width>
+					<info>ListItem.Overlay</info>
+				</control>
 				<control type="image">
 					<posx>19</posx>
 					<posy>219</posy>
@@ -339,6 +369,18 @@
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				</control>
 				<control type="image">
+					<visible>[!Control.HasFocus(300)]</visible>
+					<posx>19</posx>
+					<posy>19</posy>
+					<width>134</width>
+					<height>200</height>
+					<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
+					<texture diffuse="diffuse_poster_home.png">$INFO[ListItem.GrandparentThumb]</texture>
+					<bordertexture>border_poster_home.png</bordertexture>
+					<colordiffuse>FFAAAAAA</colordiffuse>
+				</control>
+				<control type="image">
+					<visible>[Control.HasFocus(300)]</visible>
 					<posx>19</posx>
 					<posy>19</posy>
 					<width>134</width>
@@ -372,6 +414,15 @@
 			</control>
 		</itemlayout>
 		<focusedlayout width="169" height="280" condition="Container(11001).ListItem(0).Type(movie)">
+			<!-- in progress -->
+			<control type="image">
+				<visible>ListItem.Status(InProgress)</visible>
+				<posx>67</posx>
+				<posy>5</posy>
+				<height>35</height>
+				<width>35</width>
+				<info>ListItem.Overlay</info>
+			</control>
 			<control type="image">
 				<posx>19</posx>
 				<posy>219</posy>
@@ -396,6 +447,7 @@
 				<height>236</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				<texture>focus_poster_home.png</texture>
+				<colordiffuse>Orange</colordiffuse>
 			</control>
 			<control type="label">
 				<posx>86</posx>
@@ -414,6 +466,15 @@
 			</control>
 		</focusedlayout>
 		<focusedlayout width="169" height="280" condition="Container(11001).ListItem(0).Type(episode)">
+			<!-- in progress -->
+			<control type="image">
+				<visible>ListItem.Status(InProgress)</visible>
+				<posx>67</posx>
+				<posy>5</posy>
+				<height>35</height>
+				<width>35</width>
+				<info>ListItem.Overlay</info>
+			</control>
 			<control type="image">
 				<posx>19</posx>
 				<posy>219</posy>
@@ -438,6 +499,7 @@
 				<height>236</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				<texture>focus_poster_home.png</texture>
+				<colordiffuse>Orange</colordiffuse>
 			</control>
 			<control type="label">
 				<posx>86</posx>
@@ -475,6 +537,18 @@
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				</control>
 				<control type="image">
+					<visible>[!Control.HasFocus(300)]</visible>
+					<posx>19</posx>
+					<posy>19</posy>
+					<width>200</width>
+					<height>200</height>
+					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
+					<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
+					<bordertexture>border_square_home.png</bordertexture>
+					<colordiffuse>FFAAAAAA</colordiffuse>	
+				</control>
+				<control type="image">
+					<visible>[Control.HasFocus(300)]</visible>
 					<posx>19</posx>
 					<posy>19</posy>
 					<width>200</width>
@@ -510,6 +584,7 @@
 				<height>236</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				<texture>focus_square_home.png</texture>
+				<colordiffuse>Orange</colordiffuse>
 			</control>
 		</focusedlayout>
 		<itemlayout width="238" height="280" condition="Container(11001).ListItem(0).Type(album)">
@@ -523,6 +598,18 @@
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				</control>
 				<control type="image">
+					<visible>[!Control.HasFocus(300)]</visible>
+					<posx>19</posx>
+					<posy>19</posy>
+					<width>200</width>
+					<height>200</height>
+					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
+					<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
+					<bordertexture>border_square_home.png</bordertexture>
+					<colordiffuse>FFAAAAAA</colordiffuse>
+				</control>
+				<control type="image">
+					<visible>[Control.HasFocus(300)]</visible>
 					<posx>19</posx>
 					<posy>19</posy>
 					<width>200</width>
@@ -580,6 +667,7 @@
 				<height>236</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				<texture>focus_square_home.png</texture>
+				<colordiffuse>Orange</colordiffuse>
 			</control>
 			<control type="label">
 				<posx>119</posx>
@@ -616,6 +704,15 @@
 	<include name="RecentlyAddedLayout">
 		<itemlayout width="169" height="280" condition="Container(11000).ListItem(0).Type(movie)">
 			<control type="group">
+				<!-- in progress -->
+				<control type="image">
+					<visible>ListItem.Status(InProgress)</visible>
+					<posx>67</posx>
+					<posy>5</posy>
+					<height>35</height>
+					<width>35</width>
+					<info>ListItem.Overlay</info>
+				</control>
 				<control type="image">
 					<posx>19</posx>
 					<posy>219</posy>
@@ -625,6 +722,18 @@
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				</control>
 				<control type="image">
+					<visible>[!Control.HasFocus(300)]</visible>
+					<posx>19</posx>
+					<posy>19</posy>
+					<width>134</width>
+					<height>200</height>
+					<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
+					<texture diffuse="diffuse_poster_home.png">$INFO[ListItem.Thumb]</texture>
+					<bordertexture>border_poster_home.png</bordertexture>
+					<colordiffuse>FFAAAAAA</colordiffuse>
+				</control>
+				<control type="image">
+					<visible>[Control.HasFocus(300)]</visible>
 					<posx>19</posx>
 					<posy>19</posy>
 					<width>134</width>
@@ -648,6 +757,15 @@
 		</itemlayout>
 		<itemlayout width="169" height="280" condition="Container(11000).ListItem(0).Type(episode)">
 			<control type="group">
+				<!-- in progress -->
+				<control type="image">
+					<visible>ListItem.Status(InProgress)</visible>
+					<posx>67</posx>
+					<posy>5</posy>
+					<height>35</height>
+					<width>35</width>
+					<info>ListItem.Overlay</info>
+				</control>
 				<control type="image">
 					<posx>19</posx>
 					<posy>219</posy>
@@ -657,6 +775,18 @@
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				</control>
 				<control type="image">
+					<visible>[!Control.HasFocus(300)]</visible>
+					<posx>19</posx>
+					<posy>19</posy>
+					<width>134</width>
+					<height>200</height>
+					<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
+					<texture diffuse="diffuse_poster_home.png">$INFO[ListItem.GrandparentThumb]</texture>
+					<bordertexture>border_poster_home.png</bordertexture>
+					<colordiffuse>FFAAAAAA</colordiffuse>
+				</control>
+				<control type="image">
+					<visible>[Control.HasFocus(300)]</visible>
 					<posx>19</posx>
 					<posy>19</posy>
 					<width>134</width>
@@ -690,6 +820,15 @@
 			</control>
 		</itemlayout>
 		<focusedlayout width="169" height="280" condition="Container(11000).ListItem(0).Type(movie)">
+			<!-- in progress -->
+			<control type="image">
+				<visible>ListItem.Status(InProgress)</visible>
+				<posx>67</posx>
+				<posy>5</posy>
+				<height>35</height>
+				<width>35</width>
+				<info>ListItem.Overlay</info>
+			</control>
 			<control type="image">
 				<posx>19</posx>
 				<posy>219</posy>
@@ -714,6 +853,7 @@
 				<height>236</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				<texture>focus_poster_home.png</texture>
+				<colordiffuse>Orange</colordiffuse>
 			</control>
 			<control type="label">
 				<posx>86</posx>
@@ -732,6 +872,15 @@
 			</control>
 		</focusedlayout>
 		<focusedlayout width="169" height="280" condition="Container(11000).ListItem(0).Type(episode)">
+			<!-- in progress -->
+			<control type="image">
+				<visible>ListItem.Status(InProgress)</visible>
+				<posx>67</posx>
+				<posy>5</posy>
+				<height>35</height>
+				<width>35</width>
+				<info>ListItem.Overlay</info>
+			</control>
 			<control type="image">
 				<posx>19</posx>
 				<posy>219</posy>
@@ -756,6 +905,7 @@
 				<height>236</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				<texture>focus_poster_home.png</texture>
+				<colordiffuse>Orange</colordiffuse>
 			</control>
 			<control type="label">
 				<posx>86</posx>
@@ -793,6 +943,18 @@
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				</control>
 				<control type="image">
+					<visible>[!Control.HasFocus(300)]</visible>
+					<posx>19</posx>
+					<posy>19</posy>
+					<width>200</width>
+					<height>200</height>
+					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
+					<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
+					<bordertexture>border_square_home.png</bordertexture>
+					<colordiffuse>FFAAAAAA</colordiffuse>
+				</control>
+				<control type="image">
+					<visible>[Control.HasFocus(300)]</visible>
 					<posx>19</posx>
 					<posy>19</posy>
 					<width>200</width>
@@ -828,6 +990,7 @@
 				<height>236</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				<texture>focus_square_home.png</texture>
+				<colordiffuse>Orange</colordiffuse>
 			</control>
 		</focusedlayout>
 		<itemlayout width="238" height="280" condition="Container(11000).ListItem(0).Type(album)">
@@ -841,6 +1004,18 @@
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				</control>
 				<control type="image">
+					<visible>[!Control.HasFocus(300)]</visible>
+					<posx>19</posx>
+					<posy>19</posy>
+					<width>200</width>
+					<height>200</height>
+					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
+					<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
+					<bordertexture>border_square_home.png</bordertexture>
+					<colordiffuse>FFAAAAAA</colordiffuse>
+				</control>
+				<control type="image">
+					<visible>[Control.HasFocus(300)]</visible>
 					<posx>19</posx>
 					<posy>19</posy>
 					<width>200</width>
@@ -898,6 +1073,7 @@
 				<height>236</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				<texture>focus_square_home.png</texture>
+				<colordiffuse>Orange</colordiffuse>
 			</control>
 			<control type="label">
 				<posx>119</posx>
@@ -968,6 +1144,18 @@
 							<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 						</control>
 						<control type="image">
+							<visible>[!Control.HasFocus(300)]</visible>
+							<posx>19</posx>
+							<posy>19</posy>
+							<width>200</width>
+							<height>200</height>
+							<aspectratio scalediffuse="false" align="center">scale</aspectratio>
+							<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
+							<bordertexture>border_square_home.png</bordertexture>
+							<colordiffuse>FFAAAAAA</colordiffuse>
+						</control>
+						<control type="image">
+							<visible>[Control.HasFocus(300)]</visible>
 							<posx>19</posx>
 							<posy>19</posy>
 							<width>200</width>
