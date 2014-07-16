@@ -2,12 +2,12 @@
 <includes>
 	<!--ENERGIZED-->
 	<!-- Include energized overrides and improvements -->
-	<include file="nrgOverrides.xml"/>
-	
+	<include file="IncludesOverrides.xml"/>
+
 	<include file="CommonViews.xml"/>
 	<include file="Defaults.xml"/>
 	<include file="IncludesDialogs.xml"/>
-	<include file="IncludesHome.xml"/>
+	<include file="HomeSimplexIncludes.xml"/>
 	<include file="IncludesOSD.xml"/>
 	<include file="IncludesHUD.xml"/>
 	<include name="Time">

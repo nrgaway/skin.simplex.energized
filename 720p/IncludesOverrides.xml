@@ -6,12 +6,12 @@
 	<include file="VideoOSDIncludes.xml"/>  <!-- Override original OSD -->
 	<include file="SkinSettings.xml"/>
 	<include file="HomeEnergized.xml"/>
-	<include file="nrgIncludesHome.xml"/>
-	<include file="nrgIncludesDevMode.xml"/>
+	<include file="HomeEnergizedIncludes.xml"/>
+	<include file="IncludesDevMode.xml"/>
 	<include file="ViewsListIncludes.xml"/>
 	<include file="ViewsFanart.xml"/>
 	<include file="ViewsList.xml"/>
-	<include file="nrgIncludesMediaFlags.xml"/>
+	<include file="IncludesMediaFlags.xml"/>
 
 	<include name="DevMode">
 		<control type="label">
