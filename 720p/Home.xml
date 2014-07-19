@@ -1,9 +1,7 @@
 <?xml version="1.0"?>
 <window id="0">
-	<!--ENERGIZED-->
-	<!-- Moved original Simplex home into homeDefault so we can access the Energized look as well -->
-	<include condition="Skin.HasSetting(HomeSimplex)">HomeSimplex</include>
-	<include condition="!Skin.HasSetting(HomeSimplex)">HomeEnergized</include>
-	<!--include>HomeEnergized</include-->
+	<include condition="Skin.String(Home,Energized) | IsEmpty(Skin.String(Home))">HomeEnergized</include>
+	<include condition="Skin.String(Home,Simplex)">HomeSimplex</include>
+	<include condition="Skin.String(Home,Urban)">HomeUrban</include>
+	<!--include>HomeUrban</include-->
 </window>
-

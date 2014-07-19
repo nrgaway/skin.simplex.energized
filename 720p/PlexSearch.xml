@@ -590,7 +590,7 @@
 							<posy>44</posy>
 							<visible allowhiddenfocus="false">true</visible>
 							<orientation>horizontal</orientation>
-							<ondown>7002</ondown>
+							<ondown>7003</ondown>
 							<onup>-</onup>
 							<onright>-</onright>
 							<onleft>350</onleft>
@@ -696,7 +696,7 @@
 						</control>
 					</control>
 					<!-- TV Shows -->
-					<control type="group" id="7002">
+					<control type="group" id="7003">
 						<height>260</height>
 						<control type="image">
 							<posx>50</posx>

@@ -10,7 +10,7 @@
 			<font>homelabel</font>
 			<textcolor>White</textcolor>
 			<shadowcolor>Shadow</shadowcolor>
-			<visible>Skin.HasSetting(dev.enable)</visible>
+			<visible>Skin.HasSetting(showdebug)</visible>
 		</control>
 		<control type="image">
 			<posx>0</posx>
@@ -22,7 +22,8 @@
 			<aspectratio>scale</aspectratio>
 			<aligny>top</aligny>
 			<animation effect="fade" end="40" condition="true">Conditional</animation>
-			<visible>Skin.HasSetting(dev.enable)</visible>
+			<visible>Skin.HasSetting(showdebug)</visible>
 		</control>
+		<include>debugInfos</include>
 	</include>
 </includes>

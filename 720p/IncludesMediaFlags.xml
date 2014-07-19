@@ -10,7 +10,7 @@
 		Listitem.Art(mediaTag::contentRating)
 		Listitem.Art(mediaTag::Studio)
 	-->
-	
+
 	<!-- MPAA / TV Rating -->
 	<include name="LargeContentRatingMediaFlags">
 		<!----------------------------------------------------------------------------------------------->
@@ -109,7 +109,7 @@
 			<colordiffuse>White</colordiffuse>
 		</control>
 	</include>
-	
+
 	<!-- MPAA / TV Rating -->
 	<include name="contentRatingMediaFlag">
 		<control type="image">
@@ -129,9 +129,9 @@
 			<colordiffuse>Gray</colordiffuse>
 		</control>
 	</include>
-	
+
 	<!-- Info Media Flags -->
-	<include name="infoMediaFlags">
+	<include name="InfoMediaFlags">
 		<!----------------------------------------------------------------------------------------------->
 		<control type="image">
 			<visible>!IsEmpty(Listitem.Art(mediaTag::videoResolution))</visible>
@@ -235,9 +235,9 @@
 			<colordiffuse>DarkGray</colordiffuse>
 		</control>
 	</include>
-	
+
 	<!-- Ondeck Media Flags -->
-	<include name="ondeckMediaFlags">
+	<include name="OndeckMediaFlags">
 		<!----------------------------------------------------------------------------------------------->
 		<control type="image">
 			<visible>!IsEmpty(Container(11001).ListItem(0).Art(mediaTag::videoResolution))</visible>
@@ -341,9 +341,9 @@
 			<colordiffuse>DarkGray</colordiffuse>
 		</control>
 	</include>
-	
+
 	<!-- Recently Added Media Flags -->
-	<include name="recentlyAddedMediaFlags">
+	<include name="RecentlyAddedMediaFlags">
 		<!----------------------------------------------------------------------------------------------->
 		<control type="image">
 			<visible>!IsEmpty(Container(11000).ListItem(0).Art(mediaTag::videoResolution))</visible>

@@ -270,7 +270,7 @@
 								<height>18</height>
 								<align>left</align>
 								<itemgap>15</itemgap>
-								<include>infoMediaFlags</include>
+								<include>InfoMediaFlags</include>
 							</control>
 						</control>
 						<!-- Duration -->

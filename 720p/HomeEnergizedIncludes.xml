@@ -65,7 +65,7 @@
 		</control>
 	</include>
 	<include name="OnDeck">
-		<control type="group" id="7003">
+		<control type="group" id="7002">
 			<visible>Control.IsVisible(11001) + !Container(300).OnNext + !Container(300).OnPrevious</visible>
 			<height>291</height>
 			<animation effect="fade" start="0" end="100" time="400" delay="300">Visible</animation>
@@ -96,7 +96,7 @@
 	</include>
 
 	<include name="OnDeckFirst">
-		<control type="group" id="7003">
+		<control type="group" id="7002">
 			<visible>Control.IsVisible(11001) + !Container(300).OnNext + !Container(300).OnPrevious</visible>
 			<height>291</height>
 			<animation effect="fade" start="0" end="100" time="400" delay="300">Visible</animation>
@@ -184,7 +184,7 @@
 				<include>RecentlyAddedLayout</include>
 			</control>
 		</control>
-		<control type="group" id="7003">
+		<control type="group" id="7002">
 			<visible>Control.IsVisible(11001) + Control.IsVisible(11000) + !Container(300).OnNext + !Container(300).OnPrevious</visible>
 			<height>330</height>
 			<animation effect="fade" start="0" end="100" time="400" delay="300">Visible</animation>
@@ -1500,7 +1500,7 @@
 							<height>18</height>
 							<align>left</align>
 							<itemgap>15</itemgap>
-							<include>ondeckMediaFlags</include>
+							<include>OndeckMediaFlags</include>
 						</control>
 					</control>
 					<!-- Duration -->
@@ -1775,7 +1775,7 @@
 							<height>18</height>
 							<align>left</align>
 							<itemgap>15</itemgap>
-							<include>recentlyAddedMediaFlags</include>
+							<include>RecentlyAddedMediaFlags</include>
 						</control>
 					</control>
 					<!-- Duration -->

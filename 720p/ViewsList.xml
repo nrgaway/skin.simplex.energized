@@ -760,7 +760,7 @@
 					<orientation>horizontal</orientation>
 					<itemgap>15</itemgap>
 					<align>right</align>
-					<include>infoMediaFlags</include>
+					<include>InfoMediaFlags</include>
 				</control>
 			</control>
 		</control>

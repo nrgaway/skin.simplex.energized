@@ -607,7 +607,7 @@
 				<include condition="Skin.HasSetting(RecentlyAddedFirst)">RecentlyAddedFirst</include>
 				<include condition="!Skin.HasSetting(RecentlyAddedFirst)">OnDeckFirst</include>
 				<!-- "Queue" -->
-				<control type="group" id="7002">
+				<control type="group" id="7003">
 					<visible>Control.IsVisible(11003) + !Container(300).OnNext + !Container(300).OnPrevious</visible>
 					<animation effect="fade" start="0" end="100" time="400">Visible</animation>
 					<control type="label" id="8002">

@@ -2,7 +2,7 @@
 <window id="2003">
 	<defaultcontrol always="true">1</defaultcontrol>
 	<controls>
-		<include>Background</include>
+		<include>BGDefault</include>
 		<include>Header</include>
 		<include>Time</include>
 		<control type="group">

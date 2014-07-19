@@ -8,19 +8,19 @@
 	<controls>
 		<control type="group">
 			<visible>Control.HasFocus(50)</visible>
-			<include>Background</include>
+			<include>BGDefault</include>
 		</control>
 		<control type="group">
 			<visible>Control.HasFocus(555)</visible>
-			<include>BackgroundFanart</include>
+			<include>BGLibraryFanart</include>
 		</control>
-		
+
 		<include>Header</include>
 		<include>HeaderVideo</include>
 		<include>AudioPlayingIndicator</include>
 		<include>Time</include>
-		
-		<!-- Views -->	
+
+		<!-- Views -->
 		<include>List</include>
 		<include>FanartList</include>
 	</controls>

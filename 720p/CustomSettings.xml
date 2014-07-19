@@ -69,28 +69,19 @@
 				<onup>5</onup>
 				<ondown>5</ondown>
 				<orientation>vertical</orientation>
-				<control type="radiobutton" id="1004">
-					<description>Show On Deck before Recently Added</description>
+				<control type="label">
 					<width>770</width>
 					<font>list1</font>
 					<textcolor>White</textcolor>
-					<focusedcolor>Orange</focusedcolor>
-					<texturenofocus>-</texturenofocus>
-					<texturefocus>button_settings_wide.png</texturefocus>
 					<height>54</height>
 					<align>left</align>
 					<aligny>center</aligny>
 					<textoffsety>0</textoffsety>
 					<textoffsetx>30</textoffsetx>
-					<pulseonselect>false</pulseonselect>
-					<radioposx>726</radioposx>
-					<label>$LOCALIZE[31104] $LOCALIZE[31501]</label>
-					<selected>!Skin.HasSetting(RecentlyAddedFirst)</selected>
-					<onclick>Skin.ToggleSetting(RecentlyAddedFirst)</onclick>
+					<label>Choose Home Page Design:</label>
 				</control>
-				<control type="radiobutton" id="1007">
-					<description>Show System Menu</description>
-					<width>770</width>
+				<control type="radiobutton" id="1001">
+					<width>710</width>
 					<font>list1</font>
 					<textcolor>White</textcolor>
 					<focusedcolor>Orange</focusedcolor>
@@ -100,12 +91,48 @@
 					<align>left</align>
 					<aligny>center</aligny>
 					<textoffsety>0</textoffsety>
-					<textoffsetx>30</textoffsetx>
+					<textoffsetx>90</textoffsetx>
 					<pulseonselect>false</pulseonselect>
 					<radioposx>726</radioposx>
-					<label>$LOCALIZE[31105]</label>
-					<onclick>Skin.ToggleSetting(HideSystem)</onclick>
-					<selected>!Skin.HasSetting(HideSystem)</selected>
+					<label>Energized</label>
+					<selected>Skin.String(Home,Energized) | IsEmpty(Skin.String(Home))</selected>
+					<onclick>Skin.SetString(Home,Energized)</onclick>
+				</control>
+				<control type="radiobutton" id="1002">
+					<width>710</width>
+					<font>list1</font>
+					<textcolor>White</textcolor>
+					<focusedcolor>Orange</focusedcolor>
+					<texturenofocus>-</texturenofocus>
+					<texturefocus>button_settings_wide.png</texturefocus>
+					<height>54</height>
+					<align>left</align>
+					<aligny>center</aligny>
+					<textoffsety>0</textoffsety>
+					<textoffsetx>90</textoffsetx>
+					<pulseonselect>false</pulseonselect>
+					<radioposx>726</radioposx>
+					<label>Original Simplex</label>
+					<selected>Skin.String(Home,Simplex)</selected>
+					<onclick>Skin.SetString(Home,Simplex)</onclick>
+				</control>
+				<control type="radiobutton" id="1003">
+					<width>710</width>
+					<font>list1</font>
+					<textcolor>White</textcolor>
+					<focusedcolor>Orange</focusedcolor>
+					<texturenofocus>-</texturenofocus>
+					<texturefocus>button_settings_wide.png</texturefocus>
+					<height>54</height>
+					<align>left</align>
+					<aligny>center</aligny>
+					<textoffsety>0</textoffsety>
+					<textoffsetx>90</textoffsetx>
+					<pulseonselect>false</pulseonselect>
+					<radioposx>726</radioposx>
+					<label>Urban</label>
+					<selected>Skin.String(Home,Urban)</selected>
+					<onclick>Skin.SetString(Home,Urban)</onclick>
 				</control>
 			</control>
 			<control type="grouplist" id="5">
@@ -121,7 +148,7 @@
 				<onup>5</onup>
 				<ondown>5</ondown>
 				<orientation>vertical</orientation>
-				<control type="radiobutton" id="1001">
+				<control type="radiobutton" id="1010">
 					<description>Show Slideshow</description>
 					<width>770</width>
 					<font>list1</font>
@@ -140,7 +167,7 @@
 					<selected>!Skin.HasSetting(HideHomeSlideshow)</selected>
 					<onclick>Skin.ToggleSetting(HideHomeSlideshow)</onclick>
 				</control>
-				<control type="radiobutton" id="1002">
+				<control type="radiobutton" id="1011">
 					<description>Custom Slideshow</description>
 					<width>770</width>
 					<font>list1</font>
@@ -160,7 +187,7 @@
 					<onclick>Skin.ToggleSetting(CustomSlideshow)</onclick>
 					<enable>!Skin.HasSetting(HideHomeSlideshow)</enable>
 				</control>
-				<control type="button" id="1003">
+				<control type="button" id="1012">
 					<description>Slideshow Folder</description>
 					<width>770</width>
 					<texturefocus>button_settings_wide.png</texturefocus>
