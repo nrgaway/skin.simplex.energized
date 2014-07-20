@@ -10,7 +10,7 @@
 			<font>homelabel</font>
 			<textcolor>White</textcolor>
 			<shadowcolor>Shadow</shadowcolor>
-			<visible>Skin.HasSetting(showdebug)</visible>
+			<visible>Skin.HasSetting(showgrid)</visible>
 		</control>
 		<control type="image">
 			<posx>0</posx>
@@ -22,8 +22,8 @@
 			<aspectratio>scale</aspectratio>
 			<aligny>top</aligny>
 			<animation effect="fade" end="40" condition="true">Conditional</animation>
-			<visible>Skin.HasSetting(showdebug)</visible>
+			<visible>Skin.HasSetting(showgrid)</visible>
 		</control>
-		<include>debugInfos</include>
+		<include condidtion="Skin.HasSetting(showdebug)">debugInfos</include>
 	</include>
 </includes>

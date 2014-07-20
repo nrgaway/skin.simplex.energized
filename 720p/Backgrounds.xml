@@ -17,14 +17,26 @@
 	</include>
 
 	<!-- Override Default Time Formatting -->
-	<include name="Time">
-		<control type="label">
+	<include name="TimeTop">
 			<posx>1189</posx>
 			<posy>0</posy>
-			<width>1280</width>
-			<height>46</height>
-			<align>right</align>
 			<aligny>center</aligny>
+			<height>46</height>
+	</include>
+	<include name="TimeBottom">
+			<posx>91r</posx>
+			<posy>36r</posy>
+			<aligny>center</aligny>
+			<height>36</height>
+	</include>
+	<include name="Time">
+		<control type="label">
+			<!--posx>1189</posx>
+			<posy>0</posy-->
+			<include condition="!Skin.String(Home,Urban)">TimeTop</include>
+			<include condition="Skin.String(Home,Urban)">TimeBottom</include>
+			<width>1280</width>
+			<align>right</align>
 			<info>System.Time</info>
 			<font>title1</font>
 			<textcolor>Gray</textcolor>
@@ -50,7 +62,8 @@
 			<visible>!Skin.HasSetting(HideHomeSlideshow) + !Skin.HasSetting(CustomSlideshow)</visible>
 			<control type="multiimage" id="10101">
 				<posx>0</posx>
-				<posy>-20</posy>
+				<!--posy>-20</posy-->
+				<posy>0</posy>
 				<width>1280</width>
 				<height>720</height>
 				<aspectratio>scale</aspectratio>

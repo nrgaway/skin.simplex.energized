@@ -226,11 +226,30 @@
 				<pulseonselect>false</pulseonselect>
 				<radioposx>726</radioposx>
 				<!-- TODO: Localize -->
-				<label>Developer Mode</label>
+				<label>Show Layout Grid</label>
+				<onclick>Skin.ToggleSetting(showgrid)</onclick>
+				<selected>Skin.HasSetting(showgrid)</selected>
+			</control>
+			<control type="radiobutton" id="1041">
+				<width>770</width>
+				<font>list1</font>
+				<textcolor>White</textcolor>
+				<focusedcolor>Orange</focusedcolor>
+				<texturenofocus>-</texturenofocus>
+				<texturefocus>button_settings_wide.png</texturefocus>
+				<height>54</height>
+				<align>left</align>
+				<aligny>center</aligny>
+				<textoffsety>0</textoffsety>
+				<textoffsetx>30</textoffsetx>
+				<pulseonselect>false</pulseonselect>
+				<radioposx>726</radioposx>
+				<!-- TODO: Localize -->
+				<label>Show Debug Info Overlay</label>
 				<onclick>Skin.ToggleSetting(showdebug)</onclick>
 				<selected>Skin.HasSetting(showdebug)</selected>
 			</control>
-			<control type="button" id="1041">
+			<control type="button" id="1042">
 				<width>770</width>
 				<font>list1</font>
 				<textcolor>White</textcolor>
@@ -251,7 +270,7 @@
 				<onclick>Control.Move(3,101)</onclick>
 
 			</control>
-			<control type="button" id="1042">
+			<control type="button" id="1043">
 				<width>770</width>
 				<font>list1</font>
 				<textcolor>White</textcolor>

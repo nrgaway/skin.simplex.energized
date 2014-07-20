@@ -64,34 +64,74 @@
 			</control>
 		</control>
 	</include>
+
+
+	<include name="UrbanOnDeckDefaults">
+		<posx>6</posx>
+		<width>910</width>
+		<onright>-</onright>
+		<onleft>300</onleft>
+		<include>UrbanOnDeckLayout</include>
+	</include>
+
+	<variable name="OnDeckPosition">
+		<value>$INFO[Window(0).Property(OnDeckPositionArg)]</value>
+		<value>0</value>
+	</variable>
 	<include name="UrbanOnDeck">
+		<control type="button" id="7000">
+			<posy>900</posy>
+			<onfocus>Control.SetFocus(11001,$VAR[OnDeckPosition])</onfocus>
+		</control>
 		<control type="group" id="7002">
 			<visible>Control.IsVisible(11001) + !Container(300).OnNext + !Container(300).OnPrevious</visible>
-			<height>291</height>
 			<animation effect="fade" start="0" end="100" time="400" delay="300">Visible</animation>
-			<control type="label" id="8002">
-				<font>info1</font>
-				<textcolor>Gray</textcolor>
-				<shadowcolor>Shadow</shadowcolor>
-				<width>350</width>
-				<height>30</height>
-				<align>left</align>
-				<label>$LOCALIZE[31502]</label>
-				<posx>18</posx>
-			</control>
+			<!--control type="list" id="11001"-->
 			<control type="list" id="11001">
-				<visible allowhiddenfocus="false">false</visible>
+				<visible allowhiddenfocus="false">StringCompare(Window(0).Property(OnDeck),1) | IsEmpty(Window(0).Property(OnDeck))</visible>
+				<posy>0</posy>
+				<height>240</height>
+
+				<ondown>-</ondown>
+				<onup>SetProperty(OnDeck,2,0)</onup>
+				<onup>SetProperty(OnDeckPositionArg,$INFO[Container(11001).Position],0)</onup>
+				<onup>7000</onup>
+				<onup>Control.SetFocus(11001)</onup>
+
 				<orientation>horizontal</orientation>
-				<onright>-</onright>
-				<onleft>-</onleft>
-				<ondown>300</ondown>
-				<onup>300</onup>
-				<!--width>1190</width-->
-				<width>900</width>
-				<height>340</height>
-				<posy>33</posy>
-				<posx>0</posx>
-				<include>UrbanOnDeckLayout</include>
+				<include>UrbanOnDeckDefaults</include>
+			</control>
+			<control type="panel" id="11001">
+				<!--visible allowhiddenfocus="false">false</visible-->
+				<visible allowhiddenfocus="false">StringCompare(Window(0).Property(OnDeck),2)</visible>
+				<posy>-240</posy>
+				<height>480</height>
+
+				<onup>SetProperty(OnDeck,3,0)</onup>
+				<onup>SetProperty(OnDeckPositionArg,$INFO[Container(11001).Position],0)</onup>
+				<onup>7000</onup>
+				<onup>Control.SetFocus(11001)</onup>
+
+				<ondown>SetProperty(OnDeck,1,0)</ondown>
+				<ondown>SetProperty(OnDeckPositionArg,$INFO[Container(11001).Position],0)</ondown>
+				<ondown>7000</ondown>
+				<ondown>Control.SetFocus(11001)</ondown>
+
+				<include>UrbanOnDeckDefaults</include>
+			</control>
+			<control type="panel" id="11001">
+				<!--visible allowhiddenfocus="false">false</visible-->
+				<visible allowhiddenfocus="false">StringCompare(Window(0).Property(OnDeck),3)</visible>
+				<posy>-460</posy>
+				<height>720</height>
+
+				<onup>-</onup>
+				<ondown>SetProperty(OnDeck,2,0)</ondown>
+				<ondown>SetProperty(OnDeckPositionArg,$INFO[Container(11001).Position],0)</ondown>
+				<ondown>7000</ondown>
+				<ondown>Control.SetFocus(11001)</ondown>
+
+				<include>UrbanOnDeckDefaults</include>
 			</control>
 		</control>
 	</include>
@@ -316,6 +356,7 @@
 
 		<!-- Not used; only for testing -->
 		<!--
+		<value condition="ControlGroup(7002).HasFocus + StringCompare(ListItem.Property(id),Container(11001).ListItemPosition(Container(11001).Position).Property(id))">FFFFFFFF</value>
 		<value condition="ControlGroup(7002).HasFocus + StringCompare(ListItem.Property(id),Container(11001).ListItem(Container(11001).Position).Property(id))">FFFFFFFF</value>
 		<value condition="ControlGroup(7002).HasFocus + Container(11001).Position(Container(11001).Position)">FFFFFFFF</value>
 		<value condition="ControlGroup(7002).HasFocus">FF999999</value>
@@ -412,76 +453,6 @@
 		<value condition="ListItem.Type(episode)">$INFO[ListItem.Art(smallGrandparentThumb)]</value>
 	</variable>
 
-	<!-- Layouts -------------------------------------------------------------------------------------------------------------->
-	<!--
-	  -- We do not want ANY specific conditionals in here; make them external
-	  -- within another include or variable if at all possible to help keep
-	  -- the actual layouts clean so they can be easily modified
-	  -->
-
-	<include name="ListItemPosterLayout">
-		<!-- Watched status (progress) overlay icon -->
-		<control type="image">
-			<visible>ListItem.Status(InProgress)</visible>
-			<posx>67</posx>
-			<posy>5</posy>
-			<height>35</height>
-			<width>35</width>
-			<info>ListItem.Overlay</info>
-		</control>
-
-		<!-- Media poster 'reflection' image -->
-		<control type="image">
-			<posx>19</posx>
-			<posy>219</posy>
-			<width>134</width>
-			<height>200</height>
-			<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-			<texture diffuse="reflection_poster.png" flipy="true" background="true">$VAR[ListItemPosterArt]</texture>
-		</control>
-
-		<!-- Poster border and diffuse color -->
-		<control type="image">
-			<posx>19</posx>
-			<posy>19</posy>
-			<width>134</width>
-			<height>200</height>
-			<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
-			<colordiffuse>$VAR[ListItemDiffuseColor]</colordiffuse>
-			<texture diffuse="diffuse_poster_home.png">$VAR[ListItemPosterArt]</texture>
-			<bordertexture>border_poster_home.png</bordertexture>
-		</control>
-	</include>
-
-	<include name="ListItemPosterFocusedLayout">
-		<include>ListItemPosterLayout</include>
-		<!-- Focused border -->
-		<control type="image">
-			<!--visible>ControlGroup(7002).HasFocus + StringCompare(ListItem.Property(id),Container(11001).ListItem(Container(11001).Position).Property(id))</visible-->
-			<posx>1</posx>
-			<posy>1</posy>
-			<width>170</width>
-			<height>236</height>
-			<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-			<colordiffuse>$VAR[ColorPrimaryFocused]</colordiffuse>
-			<texture>focus_poster_home.png</texture>
-		</control>
-
-		<!-- Focused item non-diffused -->
-		<control type="image">
-			<!--visible>ControlGroup(7002).HasFocus + StringCompare(ListItem.Property(id),Container(11001).ListItem(Container(11001).Position).Property(id))</visible-->
-			<posx>19</posx>
-			<posy>19</posy>
-			<width>134</width>
-			<height>200</height>
-			<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
-			<!--colordiffuse>$VAR[ListItemDiffuseColor]</colordiffuse-->
-			<texture diffuse="diffuse_poster_home.png">$VAR[ListItemPosterArt]</texture>
-			<bordertexture>border_poster_home.png</bordertexture>
-		</control>
-	</include>
-
-	<!-- Titles --------------------------------------------------------------------------------------------------------------->
 	<variable name="ListItemPosterTitle1">
 		<!--
 		<value>[COLOR=$VAR[ColorPrimary]]$INFO[ListItem.Property(id)][/COLOR]</value>
@@ -497,25 +468,112 @@
 		<value></value>
 	</variable>
 
+	<!-- Layouts -------------------------------------------------------------------------------------------------------------->
+	<!--
+	  -- We do not want ANY specific conditionals in here; make them external
+	  -- within another include or variable if at all possible to help keep
+	  -- the actual layouts clean so they can be easily modified
+	  -->
+
+	<include name="ListItemPosterLayout">
+		<!-- Watched status (progress) overlay icon -->
+		<control type="image">
+			<visible>ListItem.Status(InProgress)</visible>
+			<!--
+			<posx>67</posx>
+			<posy>5</posy>
+			<width>35</width>
+			<height>35</height>
+			-->
+			<posx>39</posx>
+			<posy>3</posy>
+			<width>36</width>
+			<height>36</height>
+			<info>ListItem.Overlay</info>
+		</control>
+
+		<!-- Media poster 'reflection' image -->
+		<control type="image">
+			<!--
+			<posx>19</posx>
+			<posy>219</posy>
+			<width>134</width>
+			<height>200</height>
+			-->
+			<posx>0</posx>
+			<posy>189</posy>
+			<width>117</width>
+			<height>174</height>
+			<aspectratio scalediffuse="false" align="center">scale</aspectratio>
+			<texture diffuse="reflection_poster.png" flipy="true" background="true">$VAR[ListItemPosterArt]</texture>
+		</control>
+
+		<!-- Poster border and diffuse color -->
+		<control type="image">
+			<!--
+			<posx>19</posx>
+			<posy>19</posy>
+			<width>134</width>
+			<height>200</height>
+			-->
+			<posx>0</posx>
+			<posy>18</posy>
+			<width>117</width>
+			<height>174</height>
+			<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
+			<colordiffuse>$VAR[ListItemDiffuseColor]</colordiffuse>
+			<texture diffuse="diffuse_poster_home.png" background="true">$VAR[ListItemPosterArt]</texture>
+			<bordertexture>border_poster_home.png</bordertexture>
+		</control>
+	</include>
+
+	<include name="ListItemPosterFocusedLayout">
+		<include>ListItemPosterLayout</include>
+
+		<!-- Focused border -->
+		<control type="image">
+			<posx>-1</posx>
+			<posy>17</posy>
+			<width>119</width>
+			<height>176</height>
+			<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
+			<colordiffuse>$VAR[ColorPrimaryFocused]</colordiffuse>
+			<texture>mask-poster-small.png</texture>
+		</control>
+
+		<!-- Focused item non-diffused -->
+		<control type="image">
+			<posx>0</posx>
+			<posy>18</posy>
+			<width>117</width>
+			<height>174</height>
+			<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
+			<texture diffuse="diffuse_poster_home.png" background="true">$VAR[ListItemPosterArt]</texture>
+			<bordertexture>border_poster_home.png</bordertexture>
+		</control>
+	</include>
+
+	<!-- Titles --------------------------------------------------------------------------------------------------------------->
+
 	<include name="ListItemPosterTitle">
 		<control type="label">
-			<posx>86</posx>
-			<posy>223</posy>
-			<width>162</width>
+			<posx>59</posx>
+			<posy>192</posy>
+			<width>117</width>
 			<height>30</height>
-			<shadowcolor>Shadow</shadowcolor>
-			<font>homelabel</font>
 			<align>center</align>
+			<font>homelabel</font>
+			<shadowcolor>Black</shadowcolor>
 			<label>$VAR[ListItemPosterTitle1]</label>
 		</control>
 		<control type="label">
-			<posx>86</posx>
-			<posy>241</posy>
-			<width>162</width>
+			<posx>59</posx>
+			<posy>210</posy>
+			<width>117</width>
 			<height>30</height>
-			<shadowcolor>Shadow</shadowcolor>
-			<font>homelabel</font>
 			<align>center</align>
+			<font>homelabel</font>
+			<shadowcolor>Black</shadowcolor>
 			<label>$VAR[ListItemPosterTitle2]</label>
 		</control>
 	</include>
@@ -543,18 +601,22 @@
 
 	<!-- UrbanOnDeckLayout ---------------------------------------------------------------------------------------------------->
 	<include name="UrbanOnDeckLayout">
-		<itemlayout width="169" height="280">
+		<!--itemlayout width="169" height="280"-->
+		<itemlayout width="129" height="240">
 			<control type="group">
 				<visible>[ListItem.Type(episode) | ListItem.Type(movie)] + Control.IsVisible(11001)</visible>
 				<include>ListItemPosterLayout</include>
 				<include>ListItemPosterTitle</include>
 			</control>
 		</itemlayout>
-		<focusedlayout width="169" height="280">
+		<!--focusedlayout width="169" height="280"-->
+		<focusedlayout width="129" height="240">
 			<control type="group">
 				<visible>[ListItem.Type(episode) | ListItem.Type(movie)] + Control.IsVisible(11001)</visible>
 				<include>ListItemPropertyIDButton</include>
-				<!--include>ListItemPosterLayout</include-->
+				<!--
+				<include>ListItemPosterLayout</include>
+				-->
 				<include>ListItemPosterFocusedLayout</include>
 				<include>ListItemPosterTitle</include>
 			</control>
@@ -1837,6 +1899,9 @@
 		</control>
 	</include>
 	<variable name="conditional_tests">
+		<value>$INFO[Container(11001).ListItem.Property(id)] : $INFO[Container(11001).ListItemPosition(Container(11001).Position).Property(id)] : $INFO[Container(11001).Position]</value>
+		<value>$INFO[Container(11001).ListItem.Property(id)] : $INFO[Container(11001).ListItemPosition(Container(11001).Position).Property(id)]</value>
+		<value>$INFO[Window(0).Property(OnDeck)]</value>
 		<value condition="StringCompare(Container(11001).ListItem(0).Property(id),Container(11001).ListItem(Container(11001).Position).Property(id)))">*$INFO[Container(11001).ListItem(0).Property(id)]*==*$INFO[Container(11001).ListItem(Container(11001).Position).Property(id)]*</value>
 
 		<!--
