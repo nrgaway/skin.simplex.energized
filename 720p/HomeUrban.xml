@@ -28,7 +28,7 @@
 				<control type="image">
 					<visible>Skin.HasSetting(showgrid)</visible>
 					<include>FullScreenBGImageDims</include>
-					<texture>orange.png</texture>
+					<texture>white.png</texture>
 				</control>
 				<!--control type="image">
 					<texture>background_home.png</texture>
@@ -553,11 +553,12 @@
 					<posy>444</posy>
 					<height>240</height>
 					<width>910</width>
+					 x=360
 					-->
-					<posx>360</posx>
-					<posy>444</posy>
-					<height>480</height>
-					<width>910</width>
+					<posx>369</posx>
+					<posy>452</posy>
+					<height>222</height>
+					<width>898</width>
 
 					<!-- Background Overlay -->
 					<!--control type="image">
@@ -568,14 +569,18 @@
 						<height>330</height>
 						<visible>true</visible>
 					</control-->
+
 					<control type="image">
-						<visible>Skin.HasSetting(showgrid)</visible>
 						<posx>0</posx>
 						<posy>0</posy>
-						<width>910</width>
-						<height>240</height>
-						<!--texture>background_overlay.png</texture-->
+						<width>898</width>
+						<height>222</height>
+						<!--
+						<visible>Skin.HasSetting(showgrid)</visible>
 						<texture>black.png</texture>
+						<texture>transparent.png</texture>
+						-->
+						<texture>background_overlay.png</texture>
 					</control>
 
 					<!-- On Deck -->

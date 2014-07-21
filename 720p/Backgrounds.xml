@@ -24,7 +24,7 @@
 			<height>46</height>
 	</include>
 	<include name="TimeBottom">
-			<posx>91r</posx>
+			<posx>15r</posx>
 			<posy>36r</posy>
 			<aligny>center</aligny>
 			<height>36</height>
