@@ -197,6 +197,26 @@
 				<onclick>Skin.ToggleSetting(HideSeekBarOnPause)</onclick>
 				<selected>Skin.HasSetting(HideSeekBarOnPause)</selected>
 			</control>
+			<control type="radiobutton" id="1037">
+				<width>770</width>
+				<font>list1</font>
+				<textcolor>White</textcolor>
+				<focusedcolor>Orange</focusedcolor>
+				<texturenofocus>-</texturenofocus>
+				<texturefocus>button_settings_wide.png</texturefocus>
+				<height>54</height>
+				<align>left</align>
+				<aligny>center</aligny>
+				<textoffsety>0</textoffsety>
+				<textoffsetx>30</textoffsetx>
+				<pulseonselect>false</pulseonselect>
+				<radioposx>726</radioposx>
+				<!-- TODO: Localize -->
+				<label>Disable Expanding Deck</label>
+				<onclick>Skin.ToggleSetting(DisableExpandingDeck)</onclick>
+				<onclick>XBMC.ReloadSkin()</onclick>
+				<selected>Skin.HasSetting(DisableExpandingDeck)</selected>
+			</control>
 		</control>
 		<control type="grouplist" id="5">
 			<visible>ControlGroup(3).Hasfocus(104)</visible>

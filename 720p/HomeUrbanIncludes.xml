@@ -12,6 +12,28 @@
 		<value>$INFO[Window(0).Property(on_deck_position_property)]</value>
 		<value>0</value>
 	</variable>
+
+	<include name="ListItemPosterLayoutBoundry">
+		<control type="image">
+			<visible>IntegerGreaterThan(Container(11001).NumItems,0)</visible>
+			<posx>0</posx>
+			<width>898</width>
+			<height>3</height>
+			<texture>white.png</texture>
+			<colordiffuse>$VAR[color_primary_focused]</colordiffuse>
+		</control>
+	</include>
+	<include name="ListItemPosterLayoutBackground">
+		<control type="image">
+			<visible>IntegerGreaterThan(Container(11001).NumItems,0)</visible>
+			<posx>0</posx>
+			<posy>0</posy>
+			<width>898</width>
+			<height>223</height>
+			<texture>background_overlay.png</texture>
+		</control>
+	</include>
+
 	<include name="UrbanOnDeck">
 		<control type="button" id="7000">
 			<posy>900</posy>
@@ -20,56 +42,80 @@
 		<control type="group" id="7002">
 			<visible>Control.IsVisible(11001) + !Container(300).OnNext + !Container(300).OnPrevious</visible>
 			<animation effect="fade" start="0" end="100" time="400" delay="300">Visible</animation>
-			<control type="image">
+
+			<!-- First row background and boundry indicators -->
+			<control type="group">
 				<visible>IntegerGreaterThan(Container(11001).NumItems,0)</visible>
-				<posx>0</posx>
 				<posy>0</posy>
-				<width>898</width>
-				<height>223</height>
-				<texture>background_overlay.png</texture>
+				<include>ListItemPosterLayoutBackground</include>
+				<control type="group">
+					<visible>!Container(11001).HasPrevious + !IntegerGreaterThan(Container(11001).Position,0) + [StringCompare(Window(0).Property(OnDeck),1) | Skin.HasSetting(DisableExpandingDeck)]</visible>
+					<include>ListItemPosterLayoutBoundry</include>
+				</control>
+				<control type="group">
+					<visible>[ !Container(11001).HasNext +
+						   IntegerGreaterThan(Container(11001).Position,5) +
+						   [StringCompare(Window(0).Property(OnDeck),1) | Skin.HasSetting(DisableExpandingDeck)]
+						 ] |
+						 !IntegerGreaterThan(Container(11001).NumItems,6)
+					 </visible>
+					<posy>222</posy>
+					<include>ListItemPosterLayoutBoundry</include>
+				</control>
 			</control>
-			<control type="image">
-				<visible>StringCompare(Window(0).Property(OnDeck),2) | StringCompare(Window(0).Property(OnDeck),3)</visible>
-				<posx>0</posx>
+
+			<!-- Second row background and boundry indicators -->
+			<control type="group">
+				<visible>!Skin.HasSetting(DisableExpandingDeck) + [StringCompare(Window(0).Property(OnDeck),2) | StringCompare(Window(0).Property(OnDeck),3)]</visible>
 				<posy>-222</posy>
-				<width>898</width>
-				<height>223</height>
-				<texture>background_overlay.png</texture>
+				<include>ListItemPosterLayoutBackground</include>
+				<control type="group">
+					<visible>!Container(11001).HasPrevious + StringCompare(Window(0).Property(OnDeck),2)</visible>
+					<include>ListItemPosterLayoutBoundry</include>
+				</control>
+				<control type="group">
+					<visible>!Container(11001).HasNext + StringCompare(Window(0).Property(OnDeck),2)</visible>
+					<posy>444</posy>
+					<include>ListItemPosterLayoutBoundry</include>
+				</control>
 			</control>
-			<control type="image">
-				<visible>StringCompare(Window(0).Property(OnDeck),3)</visible>
-				<posx>0</posx>
+
+			<!-- Third row background and boundry indicators -->
+			<control type="group">
+				<visible>!Skin.HasSetting(DisableExpandingDeck) + StringCompare(Window(0).Property(OnDeck),3)</visible>
 				<posy>-444</posy>
-				<width>898</width>
-				<height>223</height>
-				<texture>background_overlay.png</texture>
+				<include>ListItemPosterLayoutBackground</include>
+				<control type="group">
+					<visible>!Container(11001).HasPrevious + StringCompare(Window(0).Property(OnDeck),3)</visible>
+					<include>ListItemPosterLayoutBoundry</include>
+				</control>
+				<control type="group">
+					<visible>!Container(11001).HasNext + StringCompare(Window(0).Property(OnDeck),3)</visible>
+					<posy>666</posy>
+					<include>ListItemPosterLayoutBoundry</include>
+				</control>
 			</control>
-			<!--control type="list" id="11001"-->
+
+			<!-- Single row -->
 			<control type="list" id="11001">
-				<visible allowhiddenfocus="false">StringCompare(Window(0).Property(OnDeck),1) | IsEmpty(Window(0).Property(OnDeck))</visible>
+				<visible allowhiddenfocus="false">Skin.HasSetting(DisableExpandingDeck) | [StringCompare(Window(0).Property(OnDeck),1) | IsEmpty(Window(0).Property(OnDeck))]</visible>
 				<posy>0</posy>
 				<height>222</height>
 
-			<control type="image">
-				<posx>0</posx>
-				<posy>0</posy>
-				<width>898</width>
-				<height>223</height>
-				<texture>background_overlay.png</texture>
-			</control>
-
 				<ondown>-</ondown>
-				<onup>SetProperty(OnDeck,2,0)</onup>
-				<onup>SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</onup>
-				<onup>7000</onup>
-				<onup>Control.SetFocus(11001)</onup>
+				<onup condition="!Skin.HasSetting(DisableExpandingDeck)">SetProperty(OnDeck,2,0)</onup>
+				<onup condition="!Skin.HasSetting(DisableExpandingDeck)">SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</onup>
+				<onup condition="!Skin.HasSetting(DisableExpandingDeck)">7000</onup>
+				<onup condition="!Skin.HasSetting(DisableExpandingDeck)">Control.SetFocus(11001)</onup>
+				<onup condition="Skin.HasSetting(DisableExpandingDeck)">-</onup>
 
 				<orientation>horizontal</orientation>
 				<include>UrbanOnDeckDefaults</include>
 			</control>
+			<!-- Second row -->
 			<control type="panel" id="11001">
 				<!--visible allowhiddenfocus="false">false</visible-->
-				<visible allowhiddenfocus="false">Control.IsVisible(7002) + StringCompare(Window(0).Property(OnDeck),2)</visible>
+				<visible allowhiddenfocus="false">Control.IsVisible(7002) + !Skin.HasSetting(DisableExpandingDeck) +  StringCompare(Window(0).Property(OnDeck),2)</visible>
 				<posy>-222</posy>
 				<height>444</height>
 
@@ -85,9 +131,10 @@
 
 				<include>UrbanOnDeckDefaults</include>
 			</control>
+			<!-- Third row -->
 			<control type="panel" id="11001">
 				<!--visible allowhiddenfocus="false">false</visible-->
-				<visible allowhiddenfocus="false">StringCompare(Window(0).Property(OnDeck),3)</visible>
+				<visible allowhiddenfocus="false">Control.IsVisible(7002) + !Skin.HasSetting(DisableExpandingDeck) + StringCompare(Window(0).Property(OnDeck),3)</visible>
 				<posy>-444</posy>
 				<height>666</height>
 
