@@ -1173,10 +1173,16 @@
 	<include name="UrbanOnDeckInfo">
 		<!-- Ondeck Info -->
 		<control type="group">
-			<visible>[!Control.HasFocus(300) + Control.HasFocus(11001) + !Skin.HasSetting(HideOnDeckInfo)]</visible>
+			<visible>[!Control.HasFocus(300) + Control.HasFocus(11001) + !Skin.HasSetting(HideOnDeckInfo)] + [Skin.HasSetting(DisableExpandingDeck) | [StringCompare(Window(0).Property(OnDeck),1) | IsEmpty(Window(0).Property(OnDeck))]]</visible>
+			<!--
 			<posx>219</posx>
 			<posy>228</posy>
 			<width>1008</width>
+			<height>201</height>
+			-->
+			<posx>357</posx>
+			<posy>258</posy>
+			<width>898</width>
 			<height>201</height>
 			<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 			<!-- Thumbs -->
@@ -1188,7 +1194,7 @@
 				<control type="image">
 					<visible>[Container(11001).ListItem(0).Type(movie) | Container(11001).ListItem(0).Type(episode)]</visible>
 					<description>Title</description>
-					<width>1008</width>
+					<width>923</width>
 					<height>201</height>
 					<texture border="0,1,0,11">OSD/OSDBackground.png</texture>
 				</control>
@@ -1273,7 +1279,7 @@
 				<control type="group">
 					<posx>188</posx>
 					<posy>39</posy>
-					<width>792</width>
+					<width>710</width>
 					<height>18</height>
 					<!-- Title -->
 					<control type="label">
@@ -1308,11 +1314,11 @@
 					<control type="image">
 						<visible>!IsEmpty(Container(11001).ListItem(0).Property(rating))</visible>
 						<description>Rating (5 Star) Image</description>
-						<posx>102r</posx>
+						<posx>70r</posx>
 						<posy>0</posy>
-						<width>105</width>
+						<width>0</width>
 						<height>18</height>
-						<align>left</align>
+						<align>right</align>
 						<info>Container(11001).ListItem(0).StarRating</info>
 						<aspectratio aligny="bottom" align="left">keep</aspectratio>
 					</control>
@@ -1321,7 +1327,7 @@
 				<control type="group">
 					<posx>188</posx>
 					<posy>45</posy>
-					<width>795</width>
+					<width>710</width>
 					<height>18</height>
 					<control type="group">
 						<!-- Movie, TVShows, Seasons Details -->
@@ -1370,7 +1376,7 @@
 					<visible>!IsEmpty(Container(11001).ListItem(0).PlotOutline)</visible>
 					<posx>188</posx>
 					<posy>75</posy>
-					<width>792</width>
+					<width>710</width>
 					<height>72</height>
 					<align>justify</align>
 					<aligny>top</aligny>
@@ -1384,7 +1390,7 @@
 					<visible>IsEmpty(Container(11001).ListItem(0).PlotOutline)</visible>
 					<posx>188</posx>
 					<posy>75</posy>
-					<width>792</width>
+					<width>710</width>
 					<height>72</height>
 					<align>justify</align>
 					<aligny>top</aligny>
@@ -1399,7 +1405,7 @@
 					<posx>188</posx>
 					<posy>159</posy>
 					<height>18</height>
-					<width>789</width>
+					<width>710</width>
 					<control type="group">
 						<!-- Total Episodes -->
 						<!--control type="label">

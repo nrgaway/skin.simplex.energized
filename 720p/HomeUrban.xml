@@ -603,7 +603,7 @@
 					</control-->
 				</control>
 			</control>
-			<!--include>UrbanOnDeckInfo</include-->
+			<include>UrbanOnDeckInfo</include>
 			<!--include>UrbanRecentlyAddedInfo</include-->
 			<!-- Recently Added Label -->
 			<!--control type="label" id="8002">
