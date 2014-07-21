@@ -54,6 +54,12 @@
 			<variant>Bold</variant>
 		</font>
 		<font>
+			<name>list0</name>
+			<filename>HelveticaNeue</filename>
+			<variant>Medium</variant>
+			<size>36</size>
+		</font>
+		<font>
 			<name>list1</name>
 			<filename>HelveticaNeue</filename>
 			<variant>Medium</variant>

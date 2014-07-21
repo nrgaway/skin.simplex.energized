@@ -95,19 +95,6 @@
 							<control type="label">
 								<width>288</width>
 								<height>50</height>
-								<posx>0r</posx>
-								<align>right</align>
-								<aligny>center</aligny>
-								<info>ListItem.Label</info>
-								<font>list1</font>
-								<textcolor>Gray</textcolor>
-								<shadowcolor>Shadow</shadowcolor>
-								<scroll>false</scroll>
-								<visible>!Control.HasFocus(300)</visible>
-							</control>
-							<control type="label">
-								<width>288</width>
-								<height>50</height>
 								<align>right</align>
 								<aligny>center</aligny>
 								<info>ListItem.Label</info>
@@ -115,11 +102,11 @@
 								<textcolor>White</textcolor>
 								<shadowcolor>Shadow</shadowcolor>
 								<scroll>false</scroll>
-								<visible>Control.HasFocus(300)</visible>
+								<!--visible>Control.HasFocus(300)</visible-->
 							</control>
 						</control>
 					</itemlayout>
-					<focusedlayout height="54">
+					<focusedlayout height="108">
 						<!--control type="image">
 							<width>288</width>
 							<height>54</height>
@@ -132,28 +119,33 @@
 							<!--posx>144</posx-->
 							<posx>288</posx>
 							<control type="label">
-								<posy>0</posy>
+								<posy>52</posy>
 								<width>288</width>
-								<height>50</height>
+								<height>0</height>
 								<align>right</align>
 								<aligny>center</aligny>
 								<info>ListItem.Label</info>
-								<font>list1</font>
-								<textcolor>White</textcolor>
-								<shadowcolor>Shadow</shadowcolor>
-								<scroll>true</scroll>
-								<animation effect="fade" start="100" end="0" time="100" delay="100" reversible="false">Focus</animation>
-							</control>
-							<control type="label">
-								<width>288</width>
-								<height>50</height>
-								<align>right</align>
-								<aligny>center</aligny>
-								<info>ListItem.Label</info>
-								<font>list1</font>
+								<font>list0</font>
 								<textcolor>Orange</textcolor>
 								<shadowcolor>Shadow</shadowcolor>
 								<scroll>true</scroll>
+								<animation effect="fade" start="0" end="100" time="100" delay="100" reversible="false" condition="Container(300).OnNext">Focus</animation>
+								<animation effect="fade" start="0" end="100" time="100" delay="100" reversible="false" condition="Container(300).OnPrevious">Focus</animation>
+							</control>
+							<control type="label">
+								<!--
+								-->
+								<visible>!IsEmpty(ListItem.Property(SectionNameCollision))</visible>
+								<posy>24</posy>
+								<width>288</width>
+								<height>0</height>
+								<align>right</align>
+								<aligny>center</aligny>
+								<label>$INFO[ListItem.Label2]</label>
+								<font>list3</font>
+								<textcolor>Orange</textcolor>
+								<shadowcolor>Shadow</shadowcolor>
+								<scroll>false</scroll>
 								<animation effect="fade" start="0" end="100" time="100" delay="100" reversible="false" condition="Container(300).OnNext">Focus</animation>
 								<animation effect="fade" start="0" end="100" time="100" delay="100" reversible="false" condition="Container(300).OnPrevious">Focus</animation>
 							</control>
