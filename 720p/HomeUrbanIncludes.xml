@@ -9,7 +9,7 @@
 	</include>
 
 	<variable name="on_deck_position">
-		<value>$INFO[Window(0).Property(on_deck_positionArg)]</value>
+		<value>$INFO[Window(0).Property(on_deck_position_property)]</value>
 		<value>0</value>
 	</variable>
 	<include name="UrbanOnDeck">
@@ -20,15 +20,47 @@
 		<control type="group" id="7002">
 			<visible>Control.IsVisible(11001) + !Container(300).OnNext + !Container(300).OnPrevious</visible>
 			<animation effect="fade" start="0" end="100" time="400" delay="300">Visible</animation>
+			<control type="image">
+				<visible>IntegerGreaterThan(Container(11001).NumItems,0)</visible>
+				<posx>0</posx>
+				<posy>0</posy>
+				<width>898</width>
+				<height>223</height>
+				<texture>background_overlay.png</texture>
+			</control>
+			<control type="image">
+				<visible>StringCompare(Window(0).Property(OnDeck),2) | StringCompare(Window(0).Property(OnDeck),3)</visible>
+				<posx>0</posx>
+				<posy>-222</posy>
+				<width>898</width>
+				<height>223</height>
+				<texture>background_overlay.png</texture>
+			</control>
+			<control type="image">
+				<visible>StringCompare(Window(0).Property(OnDeck),3)</visible>
+				<posx>0</posx>
+				<posy>-444</posy>
+				<width>898</width>
+				<height>223</height>
+				<texture>background_overlay.png</texture>
+			</control>
 			<!--control type="list" id="11001"-->
 			<control type="list" id="11001">
 				<visible allowhiddenfocus="false">StringCompare(Window(0).Property(OnDeck),1) | IsEmpty(Window(0).Property(OnDeck))</visible>
 				<posy>0</posy>
 				<height>222</height>
 
+			<control type="image">
+				<posx>0</posx>
+				<posy>0</posy>
+				<width>898</width>
+				<height>223</height>
+				<texture>background_overlay.png</texture>
+			</control>
+
 				<ondown>-</ondown>
 				<onup>SetProperty(OnDeck,2,0)</onup>
-				<onup>SetProperty(on_deck_positionArg,$INFO[Container(11001).Position],0)</onup>
+				<onup>SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</onup>
 				<onup>7000</onup>
 				<onup>Control.SetFocus(11001)</onup>
 
@@ -37,17 +69,17 @@
 			</control>
 			<control type="panel" id="11001">
 				<!--visible allowhiddenfocus="false">false</visible-->
-				<visible allowhiddenfocus="false">StringCompare(Window(0).Property(OnDeck),2)</visible>
+				<visible allowhiddenfocus="false">Control.IsVisible(7002) + StringCompare(Window(0).Property(OnDeck),2)</visible>
 				<posy>-222</posy>
 				<height>444</height>
 
 				<onup>SetProperty(OnDeck,3,0)</onup>
-				<onup>SetProperty(on_deck_positionArg,$INFO[Container(11001).Position],0)</onup>
+				<onup>SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</onup>
 				<onup>7000</onup>
 				<onup>Control.SetFocus(11001)</onup>
 
 				<ondown>SetProperty(OnDeck,1,0)</ondown>
-				<ondown>SetProperty(on_deck_positionArg,$INFO[Container(11001).Position],0)</ondown>
+				<ondown>SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</ondown>
 				<ondown>7000</ondown>
 				<ondown>Control.SetFocus(11001)</ondown>
 
@@ -61,7 +93,7 @@
 
 				<onup>-</onup>
 				<ondown>SetProperty(OnDeck,2,0)</ondown>
-				<ondown>SetProperty(on_deck_positionArg,$INFO[Container(11001).Position],0)</ondown>
+				<ondown>SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</ondown>
 				<ondown>7000</ondown>
 				<ondown>Control.SetFocus(11001)</ondown>
 
