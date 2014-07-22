@@ -1500,7 +1500,7 @@
 							<height>18</height>
 							<align>left</align>
 							<itemgap>15</itemgap>
-							<include>OndeckMediaFlags</include>
+							<include>InfoMediaFlags</include>
 						</control>
 					</control>
 					<!-- Duration -->
@@ -1775,7 +1775,7 @@
 							<height>18</height>
 							<align>left</align>
 							<itemgap>15</itemgap>
-							<include>RecentlyAddedMediaFlags</include>
+							<include>InfoMediaFlags</include>
 						</control>
 					</control>
 					<!-- Duration -->

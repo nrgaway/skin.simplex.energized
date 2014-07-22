@@ -97,7 +97,7 @@
 			</control>
 
 			<!-- Single row -->
-			<control type="list" id="11001">
+			<control type="fixedlist" id="11001">
 				<visible allowhiddenfocus="false">Skin.HasSetting(DisableExpandingDeck) | [StringCompare(Window(0).Property(OnDeck),1) | IsEmpty(Window(0).Property(OnDeck))]</visible>
 				<posy>0</posy>
 				<height>222</height>
@@ -110,8 +110,10 @@
 				<onup condition="Skin.HasSetting(DisableExpandingDeck)">-</onup>
 
 				<orientation>horizontal</orientation>
+				<focusposition>1</focusposition>
 				<include>UrbanOnDeckDefaults</include>
 			</control>
+			<!--------------------------------------------------------------------------------------------------------->
 			<!-- Second row -->
 			<control type="panel" id="11001">
 				<!--visible allowhiddenfocus="false">false</visible-->
@@ -150,7 +152,7 @@
 	</include>
 
 	<!-- XXX: Just a dummy template to use; remove when module complete -->
-	<variable name="listItem_poster_TEMPLATE">
+	<variable name="list_item_poster_TEMPLATE">
 		<value condition=""></value>
 		<value></value>
 	</variable>
@@ -158,7 +160,7 @@
 	<!-- Variables ------------------------------------------------------------------------------------------------------------>
 
 	<!-- Diffuse poster when list is focused, but not focused poster -->
-	<variable name="listItem_diffuse_color">
+	<variable name="list_item_diffuse_color">
 		<value condition="ControlGroup(7002).HasFocus">FF999999</value>
 		<value>FFFFFFFF</value>
 
@@ -256,7 +258,7 @@
 		<value>White</value>
 	</variable>
 
-	<variable name="listItem_poster_art">
+	<variable name="list_item_poster_art">
 		<value condition="!ListItem.Type(episode)">$INFO[ListItem.Art(smallThumb)]</value>
 		<value condition="ListItem.Type(episode)">$INFO[ListItem.Art(smallGrandparentThumb)]</value>
 	</variable>
@@ -303,7 +305,7 @@
 			<width>117</width>
 			<height>174</height>
 			<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-			<texture diffuse="reflection_poster.png" flipy="true" background="true">$VAR[listItem_poster_art]</texture>
+			<texture diffuse="reflection_poster.png" flipy="true" background="true">$VAR[list_item_poster_art]</texture>
 		</control>
 
 		<!-- Poster border and diffuse color -->
@@ -313,8 +315,9 @@
 			<width>117</width>
 			<height>174</height>
 			<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
-			<colordiffuse>$VAR[listItem_diffuse_color]</colordiffuse>
-			<texture diffuse="mask-poster-small.png" background="true">$VAR[listItem_poster_art]</texture>
+			<colordiffuse>$VAR[list_item_diffuse_color]</colordiffuse>
+			<!--disabledcolordiffuse>Orange</disabledcolordiffuse-->
+			<texture diffuse="mask-poster-small.png" background="true">$VAR[list_item_poster_art]</texture>
 			<!--bordertexture>border_poster_home.png</bordertexture-->
 		</control>
 	</include>
@@ -339,22 +342,23 @@
 			<width>117</width>
 			<height>174</height>
 			<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
-			<texture diffuse="mask-poster-small.png" background="true">$VAR[listItem_poster_art]</texture>
+			<texture diffuse="mask-poster-small.png" background="true">$VAR[list_item_poster_art]</texture>
 			<!--bordertexture>mask-poster-small.png</bordertexture-->
 		</control>
 	</include>
 
 	<!-- Titles --------------------------------------------------------------------------------------------------------------->
-	<variable name="listItem_poster_title_1">
-		<!--
-		<value>[COLOR=$VAR[color_primary]]$INFO[ListItem.Property(id)][/COLOR]</value>
-		-->
+	<variable name="list_item_poster_title_1">
 		<value condition="ControlGroup(7002).HasFocus + StringCompare(ListItem.Property(id),Container(11001).ListItem(Container(11001).Position).Property(id)) + ListItem.Type(episode)">[COLOR=$VAR[color_primary_focused]]$INFO[ListItem.TVShowTitle][/COLOR]</value>
 		<value condition="ControlGroup(7002).HasFocus + StringCompare(ListItem.Property(id),Container(11001).ListItem(Container(11001).Position).Property(id)) + ListItem.Type(movie)">[COLOR=$VAR[color_primary_focused]]$INFO[ListItem.Label][/COLOR]</value>
+
+		<value condition="ControlGroup(7002).HasFocus + Container(11001).ListItem(0).Type(episode)">$INFO[Container(11001).ListItem(0).TVShowTitle]</value>
+		<value condition="ControlGroup(7002).HasFocus + Container(11001).ListItem(0).Type(movie)">$INFO[Container(11001).ListItem(0).Label]</value>
+
 		<value condition="ListItem.Type(episode)">[COLOR=$VAR[color_primary]]$INFO[ListItem.TVShowTitle][/COLOR]</value>
 		<value>[COLOR=$VAR[color_primary]]$INFO[ListItem.Label][/COLOR]</value>
 	</variable>
-	<variable name="listItem_poster_title_2">
+	<variable name="list_item_poster_title_2">
 		<!--value condition="ControlGroup(7002).HasFocus + StringCompare(ListItem.Property(id),Container(11001).ListItem(Container(11001).Position).Property(id)) + [ListItem.Type(episode)]">[COLOR=$VAR[color_secondary_focused]]$INFO[ListItem.Season,,x]$INFO[ListItem.Episode][/COLOR]</value-->
 		<!--value condition="ListItem.Type(episode)">[COLOR=$VAR[color_secondary]]$INFO[ListItem.Season,,x]$INFO[ListItem.Episode][/COLOR]</value-->
 
@@ -372,7 +376,7 @@
 			<align>center</align>
 			<font>homelabel</font>
 			<shadowcolor>Black</shadowcolor>
-			<label>$VAR[listItem_poster_title_1]</label>
+			<label>$VAR[list_item_poster_title_1]</label>
 		</control>
 	</include>
 	<include name="ListItemPosterTitle2">
@@ -386,11 +390,11 @@
 			<aligny>center</aligny>
 			<font>homelabel</font>
 			<shadowcolor>Black</shadowcolor>
-			<label>$VAR[listItem_poster_title_2]</label>
+			<label>$VAR[list_item_poster_title_2]</label>
 		</control>
 	</include>
 
-	<variable name="listItem_property_id">
+	<variable name="list_item_property_id">
 		<!--value>$INFO[ListItem.Property(id)]</value-->
 		<value>$INFO[Container(11001).ListItem.Property(id)]</value>
 	</variable>
@@ -405,15 +409,14 @@
 			<font>info1</font>
 			<textcolor>White</textcolor>
 			<focusedcolor>Orange</focusedcolor>
-			<label>ID: $VAR[listItem_property_id]</label>
+			<label>ID: $VAR[list_item_property_id]</label>
 			-->
-			<onfocus>SetProperty(ListItemPropertyID,$VAR[listItem_property_id],0)</onfocus>
+			<onfocus>SetProperty(ListItemPropertyID,$VAR[list_item_property_id],0)</onfocus>
 		</control>
 	</include>
 
 	<!-- UrbanOnDeckLayout ---------------------------------------------------------------------------------------------------->
 	<include name="UrbanOnDeckLayout">
-		<!--itemlayout width="169" height="280"-->
 		<itemlayout width="129" height="222">
 			<control type="group">
 				<visible>[ListItem.Type(episode) | ListItem.Type(movie)] + Control.IsVisible(11001)</visible>
@@ -428,7 +431,22 @@
 				</control>
 			</control>
 		</itemlayout>
-		<!--focusedlayout width="169" height="280"-->
+		<focusedlayout width="645" height="222">
+			<include>ListItemPropertyIDButton</include>
+			<control type="group">
+				<visible>[ListItem.Type(episode) | ListItem.Type(movie)] + Control.IsVisible(11001)</visible>
+				<posx>3</posx>
+				<control type="group">
+					<include>ListItemPosterFocusedLayout</include>
+					<include>ListItemPosterTitle1</include>
+				</control>
+				<include>UrbanOnDeckInfo-501x222</include>
+			</control>
+		</focusedlayout>
+	</include>
+
+		<!--
+		# Original Layout
 		<focusedlayout width="129" height="222">
 			<include>ListItemPropertyIDButton</include>
 			<control type="group">
@@ -438,14 +456,9 @@
 					<include>ListItemPosterFocusedLayout</include>
 					<include>ListItemPosterTitle1</include>
 				</control>
-				<!--control type="group">
-					<visible>ListItem.Type(episode)</visible>
-				</control-->
 			</control>
 		</focusedlayout>
-	</include>
-
-
+		-->
 
 	<include name="UrbanOnDeckLayoutCONTINUED">
 		<itemlayout width="238" height="280" condition="Container(11001).ListItem(0).Type(photo)">
@@ -1170,265 +1183,417 @@
 			</control>
 		</control>
 	</include>
-	<include name="UrbanOnDeckInfo">
+
+	<!-- Format text ratings -->
+	<variable name="text_rating">
+		<value condition="SubString(Listitem.Property(rating),0,Left)">0$VAR[text_rating_decimal,.]</value>
+		<value condition="SubString(Listitem.Property(rating),1,Left)">1$VAR[text_rating_decimal,.]</value>
+		<value condition="SubString(Listitem.Property(rating),2,Left)">2$VAR[text_rating_decimal,.]</value>
+		<value condition="SubString(Listitem.Property(rating),3,Left)">3$VAR[text_rating_decimal,.]</value>
+		<value condition="SubString(Listitem.Property(rating),4,Left)">4$VAR[text_rating_decimal,.]</value>
+		<value condition="SubString(Listitem.Property(rating),5,Left)">5$VAR[text_rating_decimal,.]</value>
+		<value condition="SubString(Listitem.Property(rating),6,Left)">6$VAR[text_rating_decimal,.]</value>
+		<value condition="SubString(Listitem.Property(rating),7,Left)">7$VAR[text_rating_decimal,.]</value>
+		<value condition="SubString(Listitem.Property(rating),8,Left)">8$VAR[text_rating_decimal,.]</value>
+		<value condition="SubString(Listitem.Property(rating),9,Left)">9$VAR[text_rating_decimal,.]</value>
+		<value condition="SubString(Listitem.Property(rating),9,Left)">10$VAR[text_rating_decimal,.]</value>
+		<value></value>
+	</variable>
+	<variable name="text_rating_decimal">
+		<value condition="SubString(Listitem.Property(rating),.0)">0</value>
+		<value condition="SubString(Listitem.Property(rating),.1)">1</value>
+		<value condition="SubString(Listitem.Property(rating),.2)">2</value>
+		<value condition="SubString(Listitem.Property(rating),.3)">3</value>
+		<value condition="SubString(Listitem.Property(rating),.4)">4</value>
+		<value condition="SubString(Listitem.Property(rating),.5)">5</value>
+		<value condition="SubString(Listitem.Property(rating),.6)">6</value>
+		<value condition="SubString(Listitem.Property(rating),.7)">7</value>
+		<value condition="SubString(Listitem.Property(rating),.8)">8</value>
+		<value condition="SubString(Listitem.Property(rating),.9)">9</value>
+		<value>0</value>
+	</variable>
+
+	<variable name="info_information">
+		<value condition="ListItem.Type(movie)]">$INFO[ListItem.Year]$INFO[ListItem.Genre, &#xB7; ]$INFO[ListItem.Property(mediaTag-contentRating), &#xB7; ]</value>
+		<value condition="ListItem.Type(episode)">$INFO[ListItem.Title]$INFO[ListItem.Season, &#xB7; ,x]$INFO[ListItem.Episode]$INFO[ListItem.Date, &#xB7; ]$INFO[ListItem.Genre, &#xB7; ]$INFO[ListItem.Property(mediaTag-contentRating), &#xB7; ]</value>
+	</variable>
+
+	<include name="InfoArt">
+		<control type="group">
+			<height>201</height>
+			<!-- Episode Thumb -->
+			<control type="group">
+				<visible>[Container(11001).ListItem(0).Type(episode)]</visible>
+				<description>Episode Thumb and Background</description>
+				<control type="image">
+					<description>Episode Thumb Background</description>
+					<posx>27</posx>
+					<posy>24</posy>
+					<width>150</width>
+					<height>99</height>
+					<texture>thumb_background.png</texture>
+				</control>
+				<control type="image">
+					<description>Poster Thumb Reflection</description>
+					<posx>27</posx>
+					<posy>122</posy>
+					<width>150</width>
+					<height>99</height>
+					<texture background="true" diffuse="reflection_episode.png" flipy="true">$INFO[Container(11001).ListItem(0).Thumb]</texture>
+					<aspectratio scalediffuse="false">scale</aspectratio>
+					<fadetime>1</fadetime>
+				</control>
+				<control type="image">
+					<description>Episode Thumb</description>
+					<posx>27</posx>
+					<posy>24</posy>
+					<width>150</width>
+					<height>99</height>
+					<texture background="true" diffuse="diffuse_episode.png">$INFO[Container(11001).ListItem(0).Thumb]</texture>
+					<aspectratio scalediffuse="false">scale</aspectratio>
+					<bordertexture>border_episode.png</bordertexture>
+					<fadetime>1</fadetime>
+				</control>
+			</control>
+			<!-- Movie, TVShows or Seasons Thumb -->
+			<control type="group">
+				<visible>[Container(11001).ListItem(0).Type(movie)]</visible>
+				<description>Poster Thumb and Background</description>
+				<control type="image">
+					<description>Poster Background</description>
+					<posx>45</posx>
+					<posy>-15</posy>
+					<width>114</width>
+					<height>171</height>
+					<texture>thumb_background.png</texture>
+				</control>
+				<control type="image">
+					<description>Poster Thumb Reflection</description>
+					<posx>45</posx>
+					<posy>155</posy>
+					<width>114</width>
+					<height>171</height>
+					<texture background="true" diffuse="reflection_poster.png" flipy="true">$INFO[Container(11001).ListItem(0).Thumb]</texture>
+					<aspectratio scalediffuse="false">scale</aspectratio>
+					<fadetime>1</fadetime>
+				</control>
+				<control type="image">
+					<description>Poster Thumb</description>
+					<posx>45</posx>
+					<posy>-15</posy>
+					<width>114</width>
+					<height>171</height>
+					<texture background="true" diffuse="diffuse_poster.png">$INFO[Container(11001).ListItem(0).Thumb]</texture>
+					<aspectratio scalediffuse="false">scale</aspectratio>
+					<bordertexture>border_episode.png</bordertexture>
+					<fadetime>1</fadetime>
+				</control>
+			</control>
+		</control>
+	</include>
+
+	<include name="UrbanOnDeckInfo-501x222">
 		<!-- Ondeck Info -->
 		<control type="group">
 			<visible>[!Control.HasFocus(300) + Control.HasFocus(11001) + !Skin.HasSetting(HideOnDeckInfo)] + [Skin.HasSetting(DisableExpandingDeck) | [StringCompare(Window(0).Property(OnDeck),1) | IsEmpty(Window(0).Property(OnDeck))]]</visible>
-			<!--
-			<posx>219</posx>
-			<posy>228</posy>
-			<width>1008</width>
-			<height>201</height>
-			-->
+
+			<!-- Info dimensions -->
+			<posx>129</posx>
+			<posy>0</posy>
+			<width>501</width>
+			<height>222</height>
+
+			<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+			<!-- Info -->
+			<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+			<!-- Movies, TvShow, Seasons or Episodes Info -->
+			<control type="group">
+				<visible>[ListItem.Type(movie) | ListItem.Type(episode)]</visible>
+				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+				<control type="group">
+					<description>Title and Image Ratings</description>
+					<posx>0</posx>  <!--      186 orig          -->
+					<posy>18</posy>  <!--       24 orig          -->
+					<width>501</width>
+					<height>18</height>
+
+					<control type="group">
+						<!-- Title -->
+						<control type="label">
+							<description>Title</description>
+							<posx>0</posx>
+							<posy>0</posy>
+							<width min="1" max="402">auto</width>
+							<height>18</height>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>osd</font>
+							<textcolor>$VAR[color_primary_focused]</textcolor>
+							<shadowcolor>Black</shadowcolor>
+							<label>$VAR[list_item_poster_title_1]</label>
+						</control>
+					</control>
+
+					<!-- Image rating -->
+					<control type="image">
+						<visible>!IsEmpty(ListItem.Property(rating))</visible>
+						<description>Text Rating</description>
+						<posx>99r</posx>
+						<posy>0</posy>
+						<width>99</width>
+						<height>18</height>
+						<align>right</align>
+						<aligny>center</aligny>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+						<info>ListItem.StarRating</info>
+					</control>
+				</control>
+				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+				<control type="group">
+					<posx>0</posx>
+					<posy>24</posy>
+					<width>501</width>
+					<height>18</height>
+					<!-- Movie, TVShows, Seasons & Episodes Details -->
+					<control type="label">
+						<description>Movie Details</description>
+						<posy>3</posy>
+						<width min="1" max="473">auto</width>
+						<align>left</align>
+						<font>list3</font>
+						<textcolor>$VAR[color_secondary_focused]</textcolor>
+						<shadowcolor>Black</shadowcolor>
+						<label>$VAR[info_information]</label>
+						<scroll>true</scroll>
+					</control>
+					<!-- Text Rating -->
+					<control type="label">
+						<visible>!IsEmpty(ListItem.Property(rating))</visible>
+						<description>Text Rating</description>
+						<posx>0r</posx>
+						<posy>3</posy>
+						<width min="1" max="28">auto</width>
+						<align>right</align>
+						<font>list3</font>
+						<textcolor>$VAR[color_primary]</textcolor>
+						<shadowcolor>Black</shadowcolor>
+						<wrapmultiline>false</wrapmultiline>
+						<label>$VAR[text_rating]</label>
+					</control>
+				</control>
+				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+				<!-- Under-rule -->
+				<control type="image">
+					<posx>0</posx>
+					<posy>54</posy>
+					<width>501</width>
+					<height>1</height>
+					<texture>white.png</texture>
+					<colordiffuse>$VAR[color_primary_focused]</colordiffuse>
+				</control>
+				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+				<!-- Plot outline -->
+				<control type="textbox" id="8">
+					<visible>!IsEmpty(ListItem.PlotOutline)</visible>
+					<posx>0</posx>
+					<posy>57</posy>
+					<width>501</width>
+					<height>117</height>
+					<align>justify</align>
+					<aligny>top</aligny>
+					<font>plot1</font>
+					<textcolor>Gray</textcolor>
+					<shadowcolor>Black</shadowcolor>
+					<autoscroll delay="10000" time="3000" repeat="10000"/>
+					<label>$INFO[ListItem.Plot]</label>
+				</control>
+				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+				<!-- Media Flags & duration-->
+				<control type="group">
+					<posx>0</posx>
+					<posy>174</posy>
+					<height>18</height>
+					<width>501</width>
+					<control type="group">
+						<!-- Media flags -->
+
+						<!--
+						<control type="image">
+							<visible>
+								Container(11000).HasFocus + !IsEmpty(Container(11000).ListItem(0).Art(mediaTag::videoResolution)) |
+								Container(11001).HasFocus + !IsEmpty(Container(11001).ListItem(0).Art(mediaTag::videoResolution)) |
+								!IsEmpty(ListItem.Art(mediaTag::videoResolution))
+							</visible>
+							<width min="1" max="95">auto</width>
+							<height>18</height>
+							<aspectratio>keep</aspectratio>
+							<colordiffuse>DarkGray</colordiffuse>
+							<texture>$VAR[art_video_resolution]</texture>
+						</control>
+						-->
+
+						<control type="group">
+							<posx>0</posx>
+							<posy>0</posy>
+							<width>303</width>
+							<height>18</height>
+							<aligny>center</aligny>
+							<include>InfoMediaFlags</include>
+						</control>
+					</control>
+					<!-- Duration -->
+					<control type="label">
+						<visible>!IsEmpty(ListItem.DurationStr)</visible>
+						<description>Duration</description>
+						<posx>0r</posx>
+						<posy>0</posy>
+						<width min="1" max="198">auto</width>
+						<height>18</height>
+						<align>right</align>
+						<aligny>bottom</aligny>
+						<font>list3</font>
+						<textcolor>DarkGray</textcolor>
+						<shadowcolor>Black</shadowcolor>
+						<wrapmultiline>false</wrapmultiline>
+						<!-- TODO: Localize -->
+						<label>Duration: $INFO[ListItem.DurationStr]</label>
+					</control>
+				</control>
+			</control>
+		</control>
+	</include>
+	<include name="UrbanOnDeckInfo-898x201">
+		<!-- Ondeck Info -->
+		<control type="group">
+			<visible>[!Control.HasFocus(300) + Control.HasFocus(11001) + !Skin.HasSetting(HideOnDeckInfo)] + [Skin.HasSetting(DisableExpandingDeck) | [StringCompare(Window(0).Property(OnDeck),1) | IsEmpty(Window(0).Property(OnDeck))]]</visible>
+
+			<!-- Info dimensions -->
 			<posx>357</posx>
 			<posy>258</posy>
 			<width>898</width>
 			<height>201</height>
-			<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-			<!-- Thumbs -->
-			<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-			<control type="group">
-				<posy>15</posy>
+
+			<!-- Info background -->
+			<control type="image">
+				<visible>[Container(11001).ListItem(0).Type(movie) | Container(11001).ListItem(0).Type(episode)]</visible>
+				<description>Title</description>
+				<width>923</width>
 				<height>201</height>
-				<!-- Info background -->
-				<control type="image">
-					<visible>[Container(11001).ListItem(0).Type(movie) | Container(11001).ListItem(0).Type(episode)]</visible>
-					<description>Title</description>
-					<width>923</width>
-					<height>201</height>
-					<texture border="0,1,0,11">OSD/OSDBackground.png</texture>
-				</control>
-				<!-- Episode Thumb -->
-				<control type="group">
-					<visible>[Container(11001).ListItem(0).Type(episode)]</visible>
-					<description>Episode Thumb and Background</description>
-					<control type="image">
-						<description>Episode Thumb Background</description>
-						<posx>27</posx>
-						<posy>24</posy>
-						<width>150</width>
-						<height>99</height>
-						<texture>thumb_background.png</texture>
-					</control>
-					<control type="image">
-						<description>Poster Thumb Reflection</description>
-						<posx>27</posx>
-						<posy>122</posy>
-						<width>150</width>
-						<height>99</height>
-						<texture background="true" diffuse="reflection_episode.png" flipy="true">$INFO[Container(11001).ListItem(0).Thumb]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<fadetime>1</fadetime>
-					</control>
-					<control type="image">
-						<description>Episode Thumb</description>
-						<posx>27</posx>
-						<posy>24</posy>
-						<width>150</width>
-						<height>99</height>
-						<texture background="true" diffuse="diffuse_episode.png">$INFO[Container(11001).ListItem(0).Thumb]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<bordertexture>border_episode.png</bordertexture>
-						<fadetime>1</fadetime>
-					</control>
-				</control>
-				<!-- Movie, TVShows or Seasons Thumb -->
-				<control type="group">
-					<visible>[Container(11001).ListItem(0).Type(movie)]</visible>
-					<description>Poster Thumb and Background</description>
-					<control type="image">
-						<description>Poster Background</description>
-						<posx>45</posx>
-						<posy>-15</posy>
-						<width>114</width>
-						<height>171</height>
-						<texture>thumb_background.png</texture>
-					</control>
-					<control type="image">
-						<description>Poster Thumb Reflection</description>
-						<posx>45</posx>
-						<posy>155</posy>
-						<width>114</width>
-						<height>171</height>
-						<texture background="true" diffuse="reflection_poster.png" flipy="true">$INFO[Container(11001).ListItem(0).Thumb]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<fadetime>1</fadetime>
-					</control>
-					<control type="image">
-						<description>Poster Thumb</description>
-						<posx>45</posx>
-						<posy>-15</posy>
-						<width>114</width>
-						<height>171</height>
-						<texture background="true" diffuse="diffuse_poster.png">$INFO[Container(11001).ListItem(0).Thumb]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<bordertexture>border_episode.png</bordertexture>
-						<fadetime>1</fadetime>
-					</control>
-				</control>
+				<texture border="0,1,0,11">OSD/OSDBackground.png</texture>
 			</control>
+
+			<!-- Poster art (thumbs) -->
+			<include>InfoArt</include>
+
 			<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 			<!-- Info -->
 			<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 			<!-- Movies, TvShow, Seasons or Episodes Info -->
 			<control type="group">
 				<visible>[Container(11001).ListItem(0).Type(movie) | Container(11001).ListItem(0).Type(episode)]</visible>
-				<width>795</width>
-				<height>150</height>
+				<width>710</width>
+				<height>126</height>
 				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 				<control type="group">
-					<posx>188</posx>
-					<posy>39</posy>
+					<description>Title and Image Ratings</description>
+					<posx>186</posx>
+					<posy>24</posy>
 					<width>710</width>
 					<height>18</height>
-					<!-- Title -->
-					<control type="label">
-						<visible>[Container(11001).ListItem(0).Type(movie)]</visible>
-						<description>Title</description>
-						<posx>0</posx>
-						<posy>0</posy>
-						<height>18</height>
-						<width min="1" max="798">auto</width>
-						<label>$INFO[Container(11001).ListItem(0).Title]</label>
-						<aligny>center</aligny>
-						<textcolor>Orange</textcolor>
-						<shadowcolor>Shadow</shadowcolor>
-						<shadowcolor>ff000000</shadowcolor>
-						<font>osd</font>
+
+					<control type="group">
+						<!-- Title -->
+						<control type="label">
+							<description>Title</description>
+							<width min="1" max="610">auto</width>
+							<height>18</height>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>osd</font>
+							<textcolor>$VAR[color_primary_focused]</textcolor>
+							<shadowcolor>Shadow</shadowcolor>
+							<label>$VAR[list_item_poster_title_1]</label>
+						</control>
 					</control>
-					<control type="label">
-						<visible>[Container(11001).ListItem(0).Type(episode)]</visible>
-						<description>Title</description>
-						<posx>0</posx>
-						<posy>0</posy>
-						<height>18</height>
-						<width min="1" max="798">auto</width>
-						<label>$INFO[Container(11001).ListItem(0).TVShowTitle]</label>
-						<aligny>center</aligny>
-						<textcolor>Orange</textcolor>
-						<shadowcolor>Shadow</shadowcolor>
-						<shadowcolor>ff000000</shadowcolor>
-						<font>osd</font>
-					</control>
-					<!-- Image Rating -->
+
+					<!-- Image rating -->
 					<control type="image">
 						<visible>!IsEmpty(Container(11001).ListItem(0).Property(rating))</visible>
-						<description>Rating (5 Star) Image</description>
-						<posx>70r</posx>
+						<description>Text Rating</description>
+						<posx>100r</posx>
 						<posy>0</posy>
-						<width>0</width>
+						<width>100</width>
 						<height>18</height>
 						<align>right</align>
+						<aligny>center</aligny>
+						<aspectratio scalediffuse="false">scale</aspectratio>
 						<info>Container(11001).ListItem(0).StarRating</info>
-						<aspectratio aligny="bottom" align="left">keep</aspectratio>
 					</control>
 				</control>
 				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 				<control type="group">
-					<posx>188</posx>
-					<posy>45</posy>
+					<posx>186</posx>
+					<posy>30</posy>
 					<width>710</width>
 					<height>18</height>
-					<control type="group">
-						<!-- Movie, TVShows, Seasons Details -->
-						<control type="label">
-							<visible>[Container(11001).ListItem(0).Type(movie)]</visible>
-							<description>Movie Details</description>
-							<posy>3</posy>
-							<width min="1" max="600">auto</width>
-							<align>left</align>
-							<label>$INFO[Container(11001).ListItem(0).Year]$INFO[Container(11001).ListItem(0).Genre, &#xB7; ]$INFO[Container(11001).ListItem(0).Property(mediaTag-contentRating), &#xB7; ]</label>
-							<textcolor>White</textcolor>
-							<shadowcolor>Shadow</shadowcolor>
-							<font>list3</font>
-						</control>
-						<!-- Episode Details -->
-						<control type="label">
-							<visible>Container(11001).ListItem(0).Type(episode)</visible>
-							<description>TV Show Details</description>
-							<posy>3</posy>
-							<width min="1" max="600">auto</width>
-							<align>left</align>
-							<label>$INFO[Container(11001).ListItem(0).Title]$INFO[Container(11001).ListItem(0).Season, &#xB7; ,x]$INFO[Container(11001).ListItem(0).Episode]$INFO[Container(11001).ListItem(0).Date, &#xB7; ]$INFO[Container(11001).ListItem(0).Genre, &#xB7; ]$INFO[Container(11001).ListItem(0).Property(mediaTag-contentRating), &#xB7; ]</label>
-							<textcolor>White</textcolor>
-							<shadowcolor>Shadow</shadowcolor>
-							<font>list3</font>
-						</control>
+					<!-- Movie, TVShows, Seasons & Episodes Details -->
+					<control type="label">
+						<description>Movie Details</description>
+						<posy>3</posy>
+						<width min="1" max="669">auto</width>
+						<align>left</align>
+						<font>list3</font>
+						<textcolor>$VAR[color_secondary_focused]</textcolor>
+						<shadowcolor>Shadow</shadowcolor>
+						<label>$VAR[info_information]</label>
+						<scroll>true</scroll>
 					</control>
 					<!-- Text Rating -->
-					<!--control type="label">
+					<control type="label">
 						<visible>!IsEmpty(Container(11001).ListItem(0).Property(rating))</visible>
 						<description>Text Rating</description>
 						<posx>0r</posx>
 						<posy>3</posy>
-						<width min="1" max="300">auto</width>
+						<width min="1" max="30">auto</width>
 						<align>right</align>
-						<label>$INFO[Container(11001).Listitem(0).Property(rating)]</label>
 						<font>list3</font>
-						<textcolor>Gray</textcolor>
+						<textcolor>$VAR[color_primary]</textcolor>
 						<shadowcolor>Shadow</shadowcolor>
 						<wrapmultiline>false</wrapmultiline>
-					</control-->
+						<label>$VAR[text_rating]</label>
+					</control>
 				</control>
 				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 				<!-- Plot outline -->
 				<control type="textbox" id="8">
 					<visible>!IsEmpty(Container(11001).ListItem(0).PlotOutline)</visible>
-					<posx>188</posx>
-					<posy>75</posy>
+					<posx>186</posx>
+					<posy>63</posy>
 					<width>710</width>
 					<height>72</height>
 					<align>justify</align>
 					<aligny>top</aligny>
-					<label>$INFO[Container(11001).ListItem(0).PlotOutline]</label>
+					<font>plot1</font>
 					<textcolor>Gray</textcolor>
 					<shadowcolor>Shadow</shadowcolor>
-					<font>plot1</font>
 					<autoscroll delay="10000" time="3000" repeat="10000"/>
-				</control>
-				<control type="textbox" id="8">
-					<visible>IsEmpty(Container(11001).ListItem(0).PlotOutline)</visible>
-					<posx>188</posx>
-					<posy>75</posy>
-					<width>710</width>
-					<height>72</height>
-					<align>justify</align>
-					<aligny>top</aligny>
 					<label>$INFO[Container(11001).ListItem(0).Plot]</label>
-					<textcolor>Gray</textcolor>
-					<shadowcolor>Shadow</shadowcolor>
-					<font>plot1</font>
-					<autoscroll delay="10000" time="3000" repeat="10000"/>
 				</control>
 				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+				<!-- Media Flags & duration-->
 				<control type="group">
-					<posx>188</posx>
-					<posy>159</posy>
+					<posx>186</posx>
+					<posy>144</posy>
 					<height>18</height>
 					<width>710</width>
 					<control type="group">
-						<!-- Total Episodes -->
-						<!--control type="label">
-							<visible>Container(11001).ListItem(0).Type(episode)</visible>
-							<description>Total Watched / Unwatched Episodes</description>
-							<posx>0</posx>
-							<posy>0</posy>
-							<width min="1" max="300">auto</width>
-							<align>Left</align>
-							<aligny>bottom</aligny>
-							<label>$INFO[Container(11001).ListItem(0).Episode] $LOCALIZE[31002] ($INFO[Container(11001).ListItem(0).Property(UnWatchedEpisodes)] $LOCALIZE[31012])</label>
-							<font>list3</font>
-							<textcolor>DarkGray</textcolor>
-							<shadowcolor>Shadow</shadowcolor>
-							<wrapmultiline>false</wrapmultiline>
-						</control-->
 						<!-- Media flags -->
 						<control type="grouplist">
 							<orientation>horizontal</orientation>
 							<height>18</height>
 							<align>left</align>
 							<itemgap>15</itemgap>
-							<include>OndeckMediaFlags</include>
+							<include>InfoMediaFlags</include>
 						</control>
 					</control>
 					<!-- Duration -->
@@ -1437,290 +1602,15 @@
 						<description>Duration</description>
 						<posx>0r</posx>
 						<posy>0</posy>
-						<width min="1" max="300">auto</width>
+						<width min="1" max="200">auto</width>
 						<align>right</align>
 						<aligny>bottom</aligny>
+						<font>list3</font>
+						<textcolor>DarkGray</textcolor>
+						<shadowcolor>Shadow</shadowcolor>
+						<wrapmultiline>false</wrapmultiline>
 						<!-- TODO: Localize -->
 						<label>Duration: $INFO[Container(11001).ListItem(0).DurationStr]</label>
-						<font>list3</font>
-						<textcolor>DarkGray</textcolor>
-						<shadowcolor>Shadow</shadowcolor>
-						<wrapmultiline>false</wrapmultiline>
-					</control>
-				</control>
-			</control>
-		</control>
-	</include>
-	<include name="UrbanRecentlyAddedInfo">
-		<!-- Recently Added Info -->
-		<control type="group">
-			<visible>[!Control.HasFocus(300) + Control.HasFocus(11000) + !Skin.HasSetting(HideOnDeckInfo)]</visible>
-			<posx>219</posx>
-			<posy>228</posy>
-			<width>1008</width>
-			<height>201</height>
-			<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-			<!-- Thumbs -->
-			<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-			<control type="group">
-				<posy>15</posy>
-				<height>201</height>
-				<!-- Info background -->
-				<control type="image">
-					<visible>[Container(11000).ListItem(0).Type(movie) | Container(11000).ListItem(0).Type(episode)]</visible>
-					<description>Title</description>
-					<width>1008</width>
-					<height>201</height>
-					<texture border="0,1,0,11">OSD/OSDBackground.png</texture>
-				</control>
-				<!-- Episode Thumb -->
-				<control type="group">
-					<visible>[Container(11000).ListItem(0).Type(episode)]</visible>
-					<description>Episode Thumb and Background</description>
-					<control type="image">
-						<description>Episode Thumb Background</description>
-						<posx>27</posx>
-						<posy>24</posy>
-						<width>150</width>
-						<height>99</height>
-						<texture>thumb_background.png</texture>
-					</control>
-					<control type="image">
-						<description>Poster Thumb Reflection</description>
-						<posx>27</posx>
-						<posy>122</posy>
-						<width>150</width>
-						<height>99</height>
-						<texture background="true" diffuse="reflection_episode.png" flipy="true">$INFO[Container(11000).ListItem(0).Thumb]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<fadetime>1</fadetime>
-					</control>
-					<control type="image">
-						<description>Episode Thumb</description>
-						<posx>27</posx>
-						<posy>24</posy>
-						<width>150</width>
-						<height>99</height>
-						<texture background="true" diffuse="diffuse_episode.png">$INFO[Container(11000).ListItem(0).Thumb]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<bordertexture>border_episode.png</bordertexture>
-						<fadetime>1</fadetime>
-					</control>
-				</control>
-				<!-- Movie, TVShows or Seasons Thumb -->
-				<control type="group">
-					<visible>[Container(11000).ListItem(0).Type(movie)]</visible>
-					<description>Poster Thumb and Background</description>
-					<control type="image">
-						<description>Poster Background</description>
-						<posx>45</posx>
-						<posy>-15</posy>
-						<width>114</width>
-						<height>171</height>
-						<texture>thumb_background.png</texture>
-					</control>
-					<control type="image">
-						<description>Poster Thumb Reflection</description>
-						<posx>45</posx>
-						<posy>155</posy>
-						<width>114</width>
-						<height>171</height>
-						<texture background="true" diffuse="reflection_poster.png" flipy="true">$INFO[Container(11000).ListItem(0).Thumb]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<fadetime>1</fadetime>
-					</control>
-					<control type="image">
-						<description>Poster Thumb</description>
-						<posx>45</posx>
-						<posy>-15</posy>
-						<width>114</width>
-						<height>171</height>
-						<texture background="true" diffuse="diffuse_poster.png">$INFO[Container(11000).ListItem(0).Thumb]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<bordertexture>border_episode.png</bordertexture>
-						<fadetime>1</fadetime>
-					</control>
-				</control>
-			</control>
-			<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-			<!-- Info -->
-			<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-			<!-- Movies, TvShow, Seasons or Episodes Info -->
-			<control type="group">
-				<visible>[Container(11000).ListItem(0).Type(movie) | Container(11000).ListItem(0).Type(episode)]</visible>
-				<width>795</width>
-				<height>150</height>
-				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-				<control type="group">
-					<posx>188</posx>
-					<posy>39</posy>
-					<width>792</width>
-					<height>18</height>
-					<!-- Title -->
-					<control type="label">
-						<visible>[Container(11000).ListItem(0).Type(movie)]</visible>
-						<description>Title</description>
-						<posx>0</posx>
-						<posy>0</posy>
-						<height>18</height>
-						<width min="1" max="798">auto</width>
-						<label>$INFO[Container(11000).ListItem(0).Title]</label>
-						<aligny>center</aligny>
-						<textcolor>Orange</textcolor>
-						<shadowcolor>Shadow</shadowcolor>
-						<shadowcolor>ff000000</shadowcolor>
-						<font>osd</font>
-					</control>
-					<control type="label">
-						<visible>[Container(11000).ListItem(0).Type(episode)]</visible>
-						<description>Title</description>
-						<posx>0</posx>
-						<posy>0</posy>
-						<height>18</height>
-						<width min="1" max="798">auto</width>
-						<label>$INFO[Container(11000).ListItem(0).TVShowTitle]</label>
-						<aligny>center</aligny>
-						<textcolor>Orange</textcolor>
-						<shadowcolor>Shadow</shadowcolor>
-						<shadowcolor>ff000000</shadowcolor>
-						<font>osd</font>
-					</control>
-					<!-- Image Rating -->
-					<control type="image">
-						<visible>!IsEmpty(Container(11000).ListItem(0).Property(rating))</visible>
-						<description>Rating (5 Star) Image</description>
-						<posx>102r</posx>
-						<posy>0</posy>
-						<width>105</width>
-						<height>18</height>
-						<align>left</align>
-						<info>Container(11000).ListItem(0).StarRating</info>
-						<aspectratio aligny="bottom" align="left">keep</aspectratio>
-					</control>
-				</control>
-				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-				<control type="group">
-					<posx>188</posx>
-					<posy>45</posy>
-					<width>795</width>
-					<height>18</height>
-					<control type="group">
-						<!-- Movie, TVShows, Seasons Details -->
-						<control type="label">
-							<visible>[Container(11000).ListItem(0).Type(movie)]</visible>
-							<description>Movie Details</description>
-							<posy>3</posy>
-							<width min="1" max="600">auto</width>
-							<align>left</align>
-							<label>$INFO[Container(11000).ListItem(0).Year]$INFO[Container(11000).ListItem(0).Genre, &#xB7; ]$INFO[Container(11000).ListItem(0).Property(mediaTag-contentRating), &#xB7; ]</label>
-							<textcolor>White</textcolor>
-							<shadowcolor>Shadow</shadowcolor>
-							<font>list3</font>
-						</control>
-						<!-- Episode Details -->
-						<control type="label">
-							<visible>Container(11000).ListItem(0).Type(episode)</visible>
-							<description>TV Show Details</description>
-							<posy>3</posy>
-							<width min="1" max="600">auto</width>
-							<align>left</align>
-							<label>$INFO[Container(11000).ListItem(0).Title]$INFO[Container(11000).ListItem(0).Season, &#xB7; ,x]$INFO[Container(11000).ListItem(0).Episode]$INFO[Container(11000).ListItem(0).Date, &#xB7; ]$INFO[Container(11000).ListItem(0).Genre, &#xB7; ]$INFO[Container(11000).ListItem(0).Property(mediaTag-contentRating), &#xB7; ]</label>
-							<textcolor>White</textcolor>
-							<shadowcolor>Shadow</shadowcolor>
-							<font>list3</font>
-						</control>
-					</control>
-					<!-- Text Rating -->
-					<!--control type="label">
-						<visible>!IsEmpty(Container(11000).ListItem(0).Property(rating))</visible>
-						<description>Text Rating</description>
-						<posx>0r</posx>
-						<posy>3</posy>
-						<width min="1" max="300">auto</width>
-						<align>right</align>
-						<label>$NUMBER[$INFO[Container(11000).ListItem(0).Property(rating)]</label>
-						<font>list3</font>
-						<textcolor>Gray</textcolor>
-						<shadowcolor>Shadow</shadowcolor>
-						<wrapmultiline>false</wrapmultiline>
-					</control-->
-				</control>
-				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-				<!-- Plot outline -->
-				<control type="textbox" id="8">
-					<visible>!IsEmpty(Container(11000).ListItem(0).PlotOutline)</visible>
-					<posx>188</posx>
-					<posy>75</posy>
-					<width>792</width>
-					<height>72</height>
-					<align>justify</align>
-					<aligny>top</aligny>
-					<label>$INFO[Container(11000).ListItem(0).PlotOutline]</label>
-					<textcolor>Gray</textcolor>
-					<shadowcolor>Shadow</shadowcolor>
-					<font>plot1</font>
-					<autoscroll delay="10000" time="3000" repeat="10000"/>
-				</control>
-				<control type="textbox" id="8">
-					<visible>IsEmpty(Container(11000).ListItem(0).PlotOutline)</visible>
-					<posx>188</posx>
-					<posy>75</posy>
-					<width>792</width>
-					<height>72</height>
-					<align>justify</align>
-					<aligny>top</aligny>
-					<label>$INFO[Container(11000).ListItem(0).Plot]</label>
-					<textcolor>Gray</textcolor>
-					<shadowcolor>Shadow</shadowcolor>
-					<font>plot1</font>
-					<autoscroll delay="10000" time="3000" repeat="10000"/>
-				</control>
-				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-				<control type="group">
-					<posx>188</posx>
-					<posy>159</posy>
-					<height>18</height>
-					<width>789</width>
-					<control type="group">
-						<!-- Total Episodes -->
-						<!--control type="label">
-							<visible>Container(11000).ListItem(0).Type(episode)</visible>
-							<description>Total Watched / Unwatched Episodes</description>
-							<posx>0</posx>
-							<posy>0</posy>
-							<width min="1" max="300">auto</width>
-							<align>Left</align>
-							<aligny>bottom</aligny>
-							<label>$INFO[Container(11000).ListItem(0).Episode] $LOCALIZE[31002] ($INFO[Container(11000).ListItem(0).Property(UnWatchedEpisodes)] $LOCALIZE[31012])</label>
-							<font>list3</font>
-							<textcolor>DarkGray</textcolor>
-							<shadowcolor>Shadow</shadowcolor>
-							<wrapmultiline>false</wrapmultiline>
-						</control-->
-						<!-- Media flags -->
-						<control type="grouplist">
-							<orientation>horizontal</orientation>
-							<height>18</height>
-							<align>left</align>
-							<itemgap>15</itemgap>
-							<include>RecentlyAddedMediaFlags</include>
-						</control>
-					</control>
-					<!-- Duration -->
-					<control type="label">
-						<visible>!IsEmpty(Container(11000).ListItem(0).DurationStr)</visible>
-						<description>Duration</description>
-						<posx>0r</posx>
-						<posy>0</posy>
-						<width min="1" max="300">auto</width>
-						<align>right</align>
-						<aligny>bottom</aligny>
-						<!-- TODO: Localize -->
-						<label>Duration: $INFO[Container(11000).ListItem(0).DurationStr]</label>
-						<font>list3</font>
-						<textcolor>DarkGray</textcolor>
-						<shadowcolor>Shadow</shadowcolor>
-						<wrapmultiline>false</wrapmultiline>
 					</control>
 				</control>
 			</control>

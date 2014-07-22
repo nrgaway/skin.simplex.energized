@@ -133,7 +133,7 @@
 								<aligny>center</aligny>
 								<label>$INFO[ListItem.Label2]</label>
 								<font>list3</font>
-								<textcolor>Orange</textcolor>
+								<textcolor>White</textcolor>
 								<shadowcolor>Shadow</shadowcolor>
 								<scroll>false</scroll>
 								<animation effect="fade" start="0" end="100" time="100" delay="100" reversible="false" condition="Container(300).OnNext">Focus</animation>
@@ -210,15 +210,15 @@
 					</focusedlayout>
 					<content>
 						<item>
+							<description>Skin</description>
+							<label>$LOCALIZE[31201]</label>
+							<onclick>activatewindow(56)</onclick>
+						</item>
+						<item>
 							<description>Preferences</description>
 							<label>$LOCALIZE[31200]</label>
 							<label2>pref</label2>
 							<onclick>SetFocus(302)</onclick>
-						</item>
-						<item>
-							<description>Skin</description>
-							<label>$LOCALIZE[31201]</label>
-							<onclick>activatewindow(56)</onclick>
 						</item>
 						<item>
 							<description>Channel Directory</description>
@@ -466,7 +466,9 @@
 					</control-->
 				</control>
 			</control>
-			<include>UrbanOnDeckInfo</include>
+
+			<!--include>UrbanOnDeckInfo-516x222</include-->
+			<include>UrbanOnDeckInfo-898x201</include>
 			<!--include>UrbanRecentlyAddedInfo</include-->
 
 			<!-- Recently Added Label -->
