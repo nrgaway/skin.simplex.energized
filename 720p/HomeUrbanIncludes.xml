@@ -3,7 +3,7 @@
 	<include name="UrbanOnDeckDefaults">
 		<posx>0</posx>
 		<width>1280</width>
-		<onright>-</onright>
+		<onright>310</onright>
 		<onleft>300</onleft>
 		<include>UrbanOnDeckLayout</include>
 	</include>
@@ -35,10 +35,12 @@
 	</include>
 
 	<include name="UrbanOnDeck">
+		<!--
 		<control type="button" id="7000">
 			<posy>900</posy>
 			<onfocus>Control.SetFocus(11001,$VAR[on_deck_position])</onfocus>
 		</control>
+		-->
 		<control type="group" id="7002">
 			<visible>Control.IsVisible(11001) + !Container(300).OnNext + !Container(300).OnPrevious</visible>
 			<animation effect="fade" start="0" end="100" time="400" delay="300">Visible</animation>
@@ -123,12 +125,16 @@
 				<posy>0</posy>
 				<height>222</height>
 
+				<!--
 				<ondown>-</ondown>
 				<onup condition="!Skin.HasSetting(DisableExpandingDeck)">SetProperty(OnDeck,2,0)</onup>
 				<onup condition="!Skin.HasSetting(DisableExpandingDeck)">SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</onup>
 				<onup condition="!Skin.HasSetting(DisableExpandingDeck)">7000</onup>
 				<onup condition="!Skin.HasSetting(DisableExpandingDeck)">Control.SetFocus(11001)</onup>
 				<onup condition="Skin.HasSetting(DisableExpandingDeck)">-</onup>
+				-->
+				<onup>-</onup>
+				<ondown>-</ondown>
 
 				<orientation>vertical</orientation>
 				<include>UrbanOnDeckDefaults</include>
@@ -141,6 +147,7 @@
 				<posy>-222</posy>
 				<height>444</height>
 
+				<!--
 				<onup>SetProperty(OnDeck,3,0)</onup>
 				<onup>SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</onup>
 				<onup>7000</onup>
@@ -150,6 +157,9 @@
 				<ondown>SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</ondown>
 				<ondown>7000</ondown>
 				<ondown>Control.SetFocus(11001)</ondown>
+				-->
+				<onup>-</onup>
+				<ondown>-</ondown>
 
 				<include>UrbanOnDeckDefaults</include>
 			</control>
@@ -160,14 +170,129 @@
 				<posy>-444</posy>
 				<height>666</height>
 
+				<!--
 				<onup>-</onup>
 				<ondown>SetProperty(OnDeck,2,0)</ondown>
 				<ondown>SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</ondown>
 				<ondown>7000</ondown>
 				<ondown>Control.SetFocus(11001)</ondown>
+				-->
+				<onup>-</onup>
+				<ondown>-</ondown>
 
 				<include>UrbanOnDeckDefaults</include>
 			</control>
+		</control>
+	</include>
+	<!--
+	<include name="DeckControlFont">
+		<width>169</width>
+		<height>18</height>
+		<font>info1</font>
+		<textcolor>White</textcolor>
+		<align>left</align>
+		<scroll>false</scroll>
+		<wrapmultiline>false</wrapmultiline>
+	</include>
+	-->
+	<include name="ExpandingDeckControl">
+		<control type="image">
+			<posx>100r</posx>
+			<posy>0</posy>
+			<width>100</width>
+			<height>1280</height>
+			<texture>black.png</texture>
+		</control>
+		<control type="group" id="310">
+			<visible allowhiddenfocus="true">!Skin.HasSetting(DisableExpandingDeck)</visible>
+			<description>Used to expand and collapse on-deck</description>
+			<posx>100r</posx>
+			<posy>0</posy>
+			<width>100</width>
+			<height>1280</height>
+			<orientation>vertical</orientation>
+			<itemgap>5</itemgap>
+
+			<!-- Middle Row -->
+			<!--
+			<onup condition="StringCompare(Window(0).Property(OnDeck),2) + Control.IsVisible(7002)">SetProperty(OnDeck,3,0)</onup>
+			<onup condition="StringCompare(Window(0).Property(OnDeck),2) + Control.IsVisible(7002)">SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</onup>
+			<ondown condition="StringCompare(Window(0).Property(OnDeck),2) + Control.IsVisible(7002)">SetProperty(OnDeck,1,0)</ondown>
+			<ondown condition="StringCompare(Window(0).Property(OnDeck),2) + Control.IsVisible(7002)">SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</ondown>
+			-->
+
+			<!-- Bottom Row -->
+			<!--
+			<onup condition="StringCompare(Window(0).Property(OnDeck),2) + Control.IsVisible(7002)">SetProperty(OnDeck,3,0)</onup>
+			<onup condition="[StringCompare(Window(0).Property(OnDeck),1) | IsEmpty(Window(0).Property(OnDeck))] + Control.IsVisible(7002)">SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</onup>
+			<onup condition="[StringCompare(Window(0).Property(OnDeck),1) | IsEmpty(Window(0).Property(OnDeck))] + Control.IsVisible(7002)">SetProperty(OnDeck,2,0)</onup>
+			-->
+
+			<!-- Top Row -->
+			<!--
+			<ondown condition="StringCompare(Window(0).Property(OnDeck),3) + Control.IsVisible(7002)">SetProperty(OnDeck,2,0)</ondown>
+			<ondown condition="StringCompare(Window(0).Property(OnDeck),3) + Control.IsVisible(7002)">SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</ondown>
+			-->
+
+			<!--
+			<onright>Skin.ToggleSetting(ShowFullInfoCards)</onright>
+			-->
+
+			<!-- Defaults -->
+			<!--
+			<onup>-</onup>
+			<ondown>-</ondown>
+			<onright>-</onright>
+			<onleft>7002</onleft>
+			-->
+			<control type="button" id="110017002">
+				<description>Menu Item Next Button</description>
+				<visible allowhiddenfocus="true">false</visible>
+				<posx>0</posx>
+				<posy>0</posy>
+				<width>100</width>
+				<height>22</height>
+				<label>-</label>
+				<font>-</font>
+				<texturenofocus/>
+				<texturefocus/>
+
+				<!-- Middle Row -->
+				<onup condition="StringCompare(Window(0).Property(OnDeck),2) + Control.IsVisible(7002)">SetProperty(OnDeck,3,0)</onup>
+				<onup condition="StringCompare(Window(0).Property(OnDeck),2) + Control.IsVisible(7002)">SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</onup>
+				<ondown condition="StringCompare(Window(0).Property(OnDeck),2) + Control.IsVisible(7002)">SetProperty(OnDeck,1,0)</ondown>
+				<ondown condition="StringCompare(Window(0).Property(OnDeck),2) + Control.IsVisible(7002)">SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</ondown>
+
+				<!-- Bottom Row -->
+				<onup condition="[StringCompare(Window(0).Property(OnDeck),1) | IsEmpty(Window(0).Property(OnDeck))] + Control.IsVisible(7002)">SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</onup>
+				<onup condition="[StringCompare(Window(0).Property(OnDeck),1) | IsEmpty(Window(0).Property(OnDeck))] + Control.IsVisible(7002)">SetProperty(OnDeck,2,0)</onup>
+
+				<!-- Top Row -->
+				<ondown condition="StringCompare(Window(0).Property(OnDeck),3) + Control.IsVisible(7002)">SetProperty(OnDeck,2,0)</ondown>
+				<ondown condition="StringCompare(Window(0).Property(OnDeck),3) + Control.IsVisible(7002)">SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</ondown>
+
+				<!-- XXX: Seems like we setting focus position, but never focusing;
+				     Also, ShowFullInfoCards is not setting or using it at all
+				-->
+
+				<!-- Toggle displaying on info card / poster only -->
+				<onright>Skin.ToggleSetting(ShowFullInfoCards)</onright>
+
+				<!-- Defaults -->
+				<onup>-</onup>
+				<ondown>-</ondown>
+				<onright>-</onright>
+				<onleft>7002</onleft>
+			</control>
+
+			<!--control type="label">
+				<include>DeckControlFont</include>
+				<label>DECK CONTROL:</label>
+			</control>
+			<control type="label">
+				<include>DeckControlFont</include>
+				<label/>
+			</control-->
 		</control>
 	</include>
 
@@ -622,6 +747,7 @@
 			<onfocus>SetProperty(ListItemPropertyID,$VAR[list_item_property_id],0)</onfocus>
 		</control>
 	</include>
+
 
 	<!-- UrbanOnDeckLayout ---------------------------------------------------------------------------------------------------->
 	<!-- TODO
