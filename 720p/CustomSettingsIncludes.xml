@@ -176,6 +176,7 @@
 				<!-- TODO: Localize -->
 				<label>Hide OnDeck Info</label>
 				<onclick>Skin.ToggleSetting(HideOnDeckInfo)</onclick>
+				<onclick>XBMC.ReloadSkin()</onclick>
 				<selected>Skin.HasSetting(HideOnDeckInfo)</selected>
 			</control>
 			<control type="radiobutton" id="1036">
@@ -216,6 +217,26 @@
 				<onclick>Skin.ToggleSetting(DisableExpandingDeck)</onclick>
 				<onclick>XBMC.ReloadSkin()</onclick>
 				<selected>Skin.HasSetting(DisableExpandingDeck)</selected>
+			</control>
+			<control type="radiobutton" id="1038">
+				<width>770</width>
+				<font>list1</font>
+				<textcolor>White</textcolor>
+				<focusedcolor>Orange</focusedcolor>
+				<texturenofocus>-</texturenofocus>
+				<texturefocus>button_settings_wide.png</texturefocus>
+				<height>54</height>
+				<align>left</align>
+				<aligny>center</aligny>
+				<textoffsety>0</textoffsety>
+				<textoffsetx>30</textoffsetx>
+				<pulseonselect>false</pulseonselect>
+				<radioposx>726</radioposx>
+				<!-- TODO: Localize -->
+				<label>Show Full Info Cards on Deck</label>
+				<onclick>Skin.ToggleSetting(ShowFullInfoCards)</onclick>
+				<onclick>XBMC.ReloadSkin()</onclick>
+				<selected>Skin.HasSetting(ShowFullInfoCards)</selected>
 			</control>
 		</control>
 		<control type="grouplist" id="5">

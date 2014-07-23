@@ -414,7 +414,7 @@
 					<posx>369</posx>
 					<posy>452</posy>
 					<height>222</height>
-					<width>898</width>
+					<width>1274</width>
 
 					<!-- Background Overlay -->
 					<!--control type="image">
@@ -433,6 +433,9 @@
 						<!--visible>[Control.HasFocus(300) | ControlGroup(5999).HasFocus()] + Control.IsVisible(11001)</visible-->
 						<visible>[Control.HasFocus(300) | Control.HasFocus(301)| Control.HasFocus(302) | Control.HasFocus(303) | Control.HasFocus(304) | ControlGroup(5999).HasFocus()] + Control.IsVisible(11001)</visible>
 						<include>UrbanOnDeck</include>
+						<animation effect="slide" end="-366,0" time="400" condition="!Control.HasFocus(300) + !Control.HasFocus(301) + !Control.HasFocus(302) + !Control.HasFocus(303) + !Control.HasFocus(304)">Conditional</animation>
+
+
 						<!--include>HomeLists</include-->
 						<!--animation effect="slide" end="797,0" time="400" condition="Control.HasFocus(300)">Conditional</animation-->
 						<!--animation effect="slide" end="300,0" time="400" condition="Control.HasFocus(300)">Conditional</animation-->
@@ -468,7 +471,7 @@
 			</control>
 
 			<!--include>UrbanOnDeckInfo-516x222</include-->
-			<include>UrbanOnDeckInfo-898x201</include>
+			<!--include>UrbanOnDeckInfo-898x201</include-->
 			<!--include>UrbanRecentlyAddedInfo</include-->
 
 			<!-- Recently Added Label -->
