@@ -6,7 +6,7 @@
 		<font>Regular-12</font>
 		<textcolor>white</textcolor>
 		<align>left</align>
-		<scroll>false</scroll>
+		<scroll>true</scroll>
 		<wrapmultiline>false</wrapmultiline>
 	</include>
 	<variable name="ContainerContent">
@@ -118,8 +118,6 @@
 	<variable name="HomeListSelectedItemType">
 		<!-- on deck -->
 		-->
-		<value condition="ControlGroup(7002).HasFocus + Container(11001).ListItem.Type(episode)">$VAR[test_temp]</value>
-		<value condition="ControlGroup(7002).HasFocus + Container(11001).ListItem.Type(movie)">$VAR[test_temp]</value>
 		<value condition="ControlGroup(7002).HasFocus + Container(11001).ListItem.Type(episode)">episode</value>
 		<value condition="ControlGroup(7002).HasFocus + Container(11001).ListItem.Type(movie)">movie</value>
 		<value condition="ControlGroup(7002).HasFocus + Container(11001).ListItem.Type(clip)">clip</value>

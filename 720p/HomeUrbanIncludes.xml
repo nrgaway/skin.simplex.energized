@@ -196,6 +196,7 @@
 	</include>
 	-->
 	<include name="ExpandingDeckControl">
+		<!--
 		<control type="image">
 			<posx>100r</posx>
 			<posy>0</posy>
@@ -203,6 +204,7 @@
 			<height>1280</height>
 			<texture>black.png</texture>
 		</control>
+		-->
 		<control type="group" id="310">
 			<visible allowhiddenfocus="true">!Skin.HasSetting(DisableExpandingDeck)</visible>
 			<description>Used to expand and collapse on-deck</description>
@@ -2020,9 +2022,40 @@
 	</include>
 
 	<!--
+		Some Properties that exist but not using yet
+		--------------------------------------------
+		<value>View Offset: $INFO[Container(11001).ListItem(0).Property(viewOffset)]</value>
+		<value>ratingKey: $INFO[Container(11001).ListItem(0).Property(ratingKey)]</value>
 
+		<value>plexserver: $INFO[Container(11001).ListItem(0).Property(plexserver)]</value>
+		<value>sectionPath: $INFO[Container(300).ListItem(0).Property(sectionPath)]</value>
+		<value>plex: $INFO[Container(300).ListItem(0).Property(plex)]</value>
+		<value condition="Container(11001).ListItem(0).Type(movie)">PC: movies</value>
+
+		<value>sectionPath: $INFO[Container(300).ListItem(0).Property(sectionPath)]</value>
+
+		Dunno if they exist or how to access since they are boolean
+		-----------------------------------------------------------
+		<value condition="Container(11001).ListItem(0).Property(HasWatchedState)">HasWatchedState: True</value>
+
+		Don't Seem to exist
+		-------------------
+		<value condition="Container(300).ListItem(0).DirectoryType(Movie)">PlexDirectoryType: movie</value>
+		<value condition="Container(300).ListItem(0).Type(episode)">episode</value>
+		<value condition="Container(300).ListItem(0).Type(movie)">movie</value>
+		<value condition="Container(300).ListItem(0).PlexDirectoryType(episode)">PlexDirectoryType: episode</value>
+		<value condition="Container(300).ListItem(0).PlexDirectoryType(movie)">PlexDirectoryType: movie</value>
 	-->
+
 	<variable name="conditional_tests">
+
+
+		<value>sectionPath: $INFO[Container(300).ListItem(0).Property(sectionPath)]</value>
+		<value condition="Container(11001).PlexContentType(Movie)">PC: movies</value>
+
+		<value>PlexDirectoryType: $INFO[Container(300).ListItem(0).Property(PlexContent)]</value>
+		<value>View Offset: $INFO[Container(11001).ListItem(0).Property(viewOffset)]</value>
+
 		<value>1: Empty 2: $INFO[Container(11001).ListItem.Property(id)] 3: $INFO[Container(11001).ListItemPosition().Property(id)] 4: $INFO[Container(11001).Position]</value>
 		<value>1:$INFO[ListItem.Property(id)] 2: $INFO[Container(11001).ListItem.Property(id)] 3: $INFO[Container(11001).ListItemPosition(Container(11001).Position).Property(id)] 4: $INFO[Container(11001).Position]</value>
 		<value>$INFO[Container(11001).ListItem.Property(id)] : $INFO[Container(11001).ListItemPosition(Container(11001).Position).Property(id)]</value>
