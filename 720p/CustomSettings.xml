@@ -122,7 +122,7 @@
 					<textcolor>White</textcolor>
 					<focusedcolor>Orange</focusedcolor>
 					<texturenofocus>-</texturenofocus>
-					<texturefocus>button_settings_wide.png</texturefocus>
+					<texturefocus>settings-b-wide.png</texturefocus>
 					<height>54</height>
 					<align>left</align>
 					<aligny>center</aligny>

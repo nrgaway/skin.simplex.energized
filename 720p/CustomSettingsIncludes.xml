@@ -7,7 +7,7 @@
 			<textcolor>White</textcolor>
 			<focusedcolor>Orange</focusedcolor>
 			<texturenofocus>-</texturenofocus>
-			<texturefocus>button_settings.png</texturefocus>
+			<texturefocus>settings-b.png</texturefocus>
 			<height>54</height>
 			<align>left</align>
 			<aligny>center</aligny>
@@ -23,7 +23,7 @@
 			<textcolor>White</textcolor>
 			<focusedcolor>Orange</focusedcolor>
 			<texturenofocus>-</texturenofocus>
-			<texturefocus>button_settings.png</texturefocus>
+			<texturefocus>settings-b.png</texturefocus>
 			<height>54</height>
 			<align>left</align>
 			<aligny>center</aligny>
@@ -39,7 +39,7 @@
 			<textcolor>White</textcolor>
 			<focusedcolor>Orange</focusedcolor>
 			<texturenofocus>-</texturenofocus>
-			<texturefocus>button_settings.png</texturefocus>
+			<texturefocus>settings-b.png</texturefocus>
 			<height>54</height>
 			<align>left</align>
 			<aligny>center</aligny>
@@ -71,7 +71,7 @@
 				<textcolor>White</textcolor>
 				<focusedcolor>Orange</focusedcolor>
 				<texturenofocus>-</texturenofocus>
-				<texturefocus>button_settings_wide.png</texturefocus>
+				<texturefocus>settings-b-wide.png</texturefocus>
 				<height>54</height>
 				<align>left</align>
 				<aligny>center</aligny>
@@ -90,7 +90,7 @@
 				<textcolor>White</textcolor>
 				<focusedcolor>Orange</focusedcolor>
 				<texturenofocus>-</texturenofocus>
-				<texturefocus>button_settings_wide.png</texturefocus>
+				<texturefocus>settings-b-wide.png</texturefocus>
 				<height>54</height>
 				<align>left</align>
 				<aligny>center</aligny>
@@ -108,7 +108,7 @@
 				<textcolor>White</textcolor>
 				<focusedcolor>Orange</focusedcolor>
 				<texturenofocus>-</texturenofocus>
-				<texturefocus>button_settings_wide.png</texturefocus>
+				<texturefocus>settings-b-wide.png</texturefocus>
 				<height>54</height>
 				<align>left</align>
 				<aligny>center</aligny>
@@ -127,7 +127,7 @@
 				<textcolor>White</textcolor>
 				<focusedcolor>Orange</focusedcolor>
 				<texturenofocus>-</texturenofocus>
-				<texturefocus>button_settings_wide.png</texturefocus>
+				<texturefocus>settings-b-wide.png</texturefocus>
 				<height>54</height>
 				<align>left</align>
 				<aligny>center</aligny>
@@ -146,7 +146,7 @@
 				<textcolor>White</textcolor>
 				<focusedcolor>Orange</focusedcolor>
 				<texturenofocus>-</texturenofocus>
-				<texturefocus>button_settings_wide.png</texturefocus>
+				<texturefocus>settings-b-wide.png</texturefocus>
 				<height>54</height>
 				<align>left</align>
 				<aligny>center</aligny>
@@ -165,7 +165,7 @@
 				<textcolor>White</textcolor>
 				<focusedcolor>Orange</focusedcolor>
 				<texturenofocus>-</texturenofocus>
-				<texturefocus>button_settings_wide.png</texturefocus>
+				<texturefocus>settings-b-wide.png</texturefocus>
 				<height>54</height>
 				<align>left</align>
 				<aligny>center</aligny>
@@ -185,7 +185,7 @@
 				<textcolor>White</textcolor>
 				<focusedcolor>Orange</focusedcolor>
 				<texturenofocus>-</texturenofocus>
-				<texturefocus>button_settings_wide.png</texturefocus>
+				<texturefocus>settings-b-wide.png</texturefocus>
 				<height>54</height>
 				<align>left</align>
 				<aligny>center</aligny>
@@ -204,7 +204,7 @@
 				<textcolor>White</textcolor>
 				<focusedcolor>Orange</focusedcolor>
 				<texturenofocus>-</texturenofocus>
-				<texturefocus>button_settings_wide.png</texturefocus>
+				<texturefocus>settings-b-wide.png</texturefocus>
 				<height>54</height>
 				<align>left</align>
 				<aligny>center</aligny>
@@ -224,7 +224,7 @@
 				<textcolor>White</textcolor>
 				<focusedcolor>Orange</focusedcolor>
 				<texturenofocus>-</texturenofocus>
-				<texturefocus>button_settings_wide.png</texturefocus>
+				<texturefocus>settings-b-wide.png</texturefocus>
 				<height>54</height>
 				<align>left</align>
 				<aligny>center</aligny>
@@ -258,7 +258,7 @@
 				<textcolor>White</textcolor>
 				<focusedcolor>Orange</focusedcolor>
 				<texturenofocus>-</texturenofocus>
-				<texturefocus>button_settings_wide.png</texturefocus>
+				<texturefocus>settings-b-wide.png</texturefocus>
 				<height>54</height>
 				<align>left</align>
 				<aligny>center</aligny>
@@ -277,7 +277,7 @@
 				<textcolor>White</textcolor>
 				<focusedcolor>Orange</focusedcolor>
 				<texturenofocus>-</texturenofocus>
-				<texturefocus>button_settings_wide.png</texturefocus>
+				<texturefocus>settings-b-wide.png</texturefocus>
 				<height>54</height>
 				<align>left</align>
 				<aligny>center</aligny>
@@ -296,14 +296,13 @@
 				<textcolor>White</textcolor>
 				<focusedcolor>Orange</focusedcolor>
 				<texturenofocus>-</texturenofocus>
-				<texturefocus>button_settings_wide.png</texturefocus>
+				<texturefocus>settings-b-wide.png</texturefocus>
 				<height>54</height>
 				<align>left</align>
 				<aligny>center</aligny>
 				<textoffsety>0</textoffsety>
 				<textoffsetx>30</textoffsetx>
 				<pulseonselect>false</pulseonselect>
-				<radioposx>726</radioposx>
 				<!-- TODO: Localize -->
 				<label>Reset Settings</label>
 				<onclick>Skin.ResetSettings</onclick>
@@ -317,14 +316,13 @@
 				<textcolor>White</textcolor>
 				<focusedcolor>Orange</focusedcolor>
 				<texturenofocus>-</texturenofocus>
-				<texturefocus>button_settings_wide.png</texturefocus>
+				<texturefocus>settings-b-wide.png</texturefocus>
 				<height>54</height>
 				<align>left</align>
 				<aligny>center</aligny>
 				<textoffsety>0</textoffsety>
 				<textoffsetx>30</textoffsetx>
 				<pulseonselect>false</pulseonselect>
-				<radioposx>726</radioposx>
 				<!-- TODO: Localize -->
 				<label>Reload Skin</label>
 				<onclick>XBMC.ReloadSkin()</onclick>
@@ -349,7 +347,7 @@
 				<textcolor>White</textcolor>
 				<focusedcolor>Orange</focusedcolor>
 				<texturenofocus>-</texturenofocus>
-				<texturefocus>button_settings_wide.png</texturefocus>
+				<texturefocus>settings-b-wide.png</texturefocus>
 				<height>54</height>
 				<align>left</align>
 				<aligny>center</aligny>

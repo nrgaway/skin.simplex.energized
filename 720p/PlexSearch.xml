@@ -591,8 +591,8 @@
 							<visible allowhiddenfocus="false">true</visible>
 							<orientation>horizontal</orientation>
 							<ondown>7003</ondown>
-							<onup>-</onup>
-							<onright>-</onright>
+							<onup>noop</onup>
+							<onright>noop</onright>
 							<onleft>350</onleft>
 							<posx>45</posx>
 							<width>890</width>

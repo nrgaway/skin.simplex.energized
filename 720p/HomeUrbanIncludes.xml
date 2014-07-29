@@ -30,7 +30,7 @@
 			<posy>0</posy>
 			<width>1274</width>
 			<height>223</height>
-			<texture>background_overlay.png</texture>
+			<texture>bg-overlay.png</texture>
 		</control>
 	</include>
 
@@ -126,20 +126,20 @@
 				<height>222</height>
 
 				<!--
-				<ondown>-</ondown>
+				<ondown>noop</ondown>
 				<onup condition="!Skin.HasSetting(DisableExpandingDeck)">SetProperty(OnDeck,2,0)</onup>
 				<onup condition="!Skin.HasSetting(DisableExpandingDeck)">SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</onup>
 				<onup condition="!Skin.HasSetting(DisableExpandingDeck)">7000</onup>
 				<onup condition="!Skin.HasSetting(DisableExpandingDeck)">Control.SetFocus(11001)</onup>
-				<onup condition="Skin.HasSetting(DisableExpandingDeck)">-</onup>
+				<onup condition="Skin.HasSetting(DisableExpandingDeck)">noop</onup>
 				-->
-				<onup>-</onup>
-				<ondown>-</ondown>
+				<onup>noop</onup>
+				<ondown>noop</ondown>
 
 				<orientation>vertical</orientation>
 				<include>UrbanOnDeckDefaults</include>
 			</control>
-			<!--------------------------------------------------------------------------------------------------------->
+			<!-- ==================================================================================================== -->
 			<!-- Second row panel -->
 			<control type="panel" id="11001">
 				<!--visible allowhiddenfocus="false">false</visible-->
@@ -158,8 +158,8 @@
 				<ondown>7000</ondown>
 				<ondown>Control.SetFocus(11001)</ondown>
 				-->
-				<onup>-</onup>
-				<ondown>-</ondown>
+				<onup>noop</onup>
+				<ondown>noop</ondown>
 
 				<include>UrbanOnDeckDefaults</include>
 			</control>
@@ -171,14 +171,14 @@
 				<height>666</height>
 
 				<!--
-				<onup>-</onup>
+				<onup>noop</onup>
 				<ondown>SetProperty(OnDeck,2,0)</ondown>
 				<ondown>SetProperty(on_deck_position_property,$INFO[Container(11001).Position],0)</ondown>
 				<ondown>7000</ondown>
 				<ondown>Control.SetFocus(11001)</ondown>
 				-->
-				<onup>-</onup>
-				<ondown>-</ondown>
+				<onup>noop</onup>
+				<ondown>noop</ondown>
 
 				<include>UrbanOnDeckDefaults</include>
 			</control>
@@ -242,9 +242,9 @@
 
 			<!-- Defaults -->
 			<!--
-			<onup>-</onup>
-			<ondown>-</ondown>
-			<onright>-</onright>
+			<onup>noop</onup>
+			<ondown>noop</ondown>
+			<onright>noop</onright>
 			<onleft>7002</onleft>
 			-->
 			<control type="button" id="110017002">
@@ -281,9 +281,9 @@
 				<onright>Skin.ToggleSetting(ShowFullInfoCards)</onright>
 
 				<!-- Defaults -->
-				<onup>-</onup>
-				<ondown>-</ondown>
-				<onright>-</onright>
+				<onup>noop</onup>
+				<ondown>noop</ondown>
+				<onright>noop</onright>
 				<onleft>7002</onleft>
 			</control>
 
@@ -298,10 +298,7 @@
 		</control>
 	</include>
 
-	<!-- XXX: Just a dummy template to use; remove when module complete -->
-
-	<!-- Variables ------------------------------------------------------------------------------------------------------------>
-
+	<!-- Variables ========================================================================================================== -->
 	<!-- Diffuse poster when list is focused, but not focused poster -->
 	<variable name="list_item_diffuse_color">
 		<value condition="ControlGroup(7002).HasFocus">FF999999</value>
@@ -309,13 +306,13 @@
 
 		<!--
 		Original Code
-		-------------
+		=============
 		<value condition="ControlGroup(7002).HasFocus">FF999999</value>
 		<value>FFFFFFFF</value>
 
 
 		Test Code that did not work
-		---------------------------
+		===========================
 		<value condition="StringCompare($VAR[is_listitem_focused],true)">FFFFFFFF</value>
 
 		<value condition="StringCompare(Container(11001).Position,0) + StringCompare(Container(11001).ListItemPosition(0).Property(id),Container(11001).ListItem(0).Property(id)) + Container(11001).HasFocus + StringCompare(System.CurrentControl,Container(11001).ListItem(0).Label) + StringCompare(Window(0).Property(ListItemPropertyFocused),focused)">FFFFFFFF</value>
@@ -425,55 +422,55 @@
 	<!-- XXX: Might not be useful; not used yet -->
 	<variable name="is_listitem_focused">
 		<value condition="StringCompare(Container(11001).Position,0) + StringCompare(Container(11001).ListItemPosition(0).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
-		<value condition="StringCompare(Container(11001).Position,1) + StringCompare(Container(11001).ListItemPosition(1).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,2) + StringCompare(Container(11001).ListItemPosition(2).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,3) + StringCompare(Container(11001).ListItemPosition(3).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,4) + StringCompare(Container(11001).ListItemPosition(4).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,5) + StringCompare(Container(11001).ListItemPosition(5).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,6) + StringCompare(Container(11001).ListItemPosition(6).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,7) + StringCompare(Container(11001).ListItemPosition(7).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,8) + StringCompare(Container(11001).ListItemPosition(8).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,9) + StringCompare(Container(11001).ListItemPosition(9).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,10) + StringCompare(Container(11001).ListItemPosition(10).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,11) + StringCompare(Container(11001).ListItemPosition(11).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,12) + StringCompare(Container(11001).ListItemPosition(12).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,13) + StringCompare(Container(11001).ListItemPosition(13).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,14) + StringCompare(Container(11001).ListItemPosition(14).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,15) + StringCompare(Container(11001).ListItemPosition(15).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,16) + StringCompare(Container(11001).ListItemPosition(16).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,17) + StringCompare(Container(11001).ListItemPosition(17).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,18) + StringCompare(Container(11001).ListItemPosition(18).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,19) + StringCompare(Container(11001).ListItemPosition(19).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,20) + StringCompare(Container(11001).ListItemPosition(20).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,21) + StringCompare(Container(11001).ListItemPosition(21).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,22) + StringCompare(Container(11001).ListItemPosition(22).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,23) + StringCompare(Container(11001).ListItemPosition(23).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,24) + StringCompare(Container(11001).ListItemPosition(24).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,25) + StringCompare(Container(11001).ListItemPosition(25).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,26) + StringCompare(Container(11001).ListItemPosition(26).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,27) + StringCompare(Container(11001).ListItemPosition(27).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,28) + StringCompare(Container(11001).ListItemPosition(28).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,29) + StringCompare(Container(11001).ListItemPosition(29).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,30) + StringCompare(Container(11001).ListItemPosition(30).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,31) + StringCompare(Container(11001).ListItemPosition(31).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,32) + StringCompare(Container(11001).ListItemPosition(32).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,33) + StringCompare(Container(11001).ListItemPosition(33).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,34) + StringCompare(Container(11001).ListItemPosition(34).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,35) + StringCompare(Container(11001).ListItemPosition(35).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,36) + StringCompare(Container(11001).ListItemPosition(36).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,37) + StringCompare(Container(11001).ListItemPosition(37).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,38) + StringCompare(Container(11001).ListItemPosition(38).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,39) + StringCompare(Container(11001).ListItemPosition(39).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,40) + StringCompare(Container(11001).ListItemPosition(40).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,41) + StringCompare(Container(11001).ListItemPosition(41).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,42) + StringCompare(Container(11001).ListItemPosition(42).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,43) + StringCompare(Container(11001).ListItemPosition(43).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,44) + StringCompare(Container(11001).ListItemPosition(44).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,45) + StringCompare(Container(11001).ListItemPosition(45).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,46) + StringCompare(Container(11001).ListItemPosition(46).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,47) + StringCompare(Container(11001).ListItemPosition(47).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,48) + StringCompare(Container(11001).ListItemPosition(48).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
-		<value condition="StringCompare(Container(11001).Position,49) + StringCompare(Container(11001).ListItemPosition(49).Property(id),ListItem.Property(id)) + Container(11001).HasFocu">true</value>s
+		<value condition="StringCompare(Container(11001).Position,1) + StringCompare(Container(11001).ListItemPosition(1).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,2) + StringCompare(Container(11001).ListItemPosition(2).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,3) + StringCompare(Container(11001).ListItemPosition(3).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,4) + StringCompare(Container(11001).ListItemPosition(4).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,5) + StringCompare(Container(11001).ListItemPosition(5).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,6) + StringCompare(Container(11001).ListItemPosition(6).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,7) + StringCompare(Container(11001).ListItemPosition(7).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,8) + StringCompare(Container(11001).ListItemPosition(8).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,9) + StringCompare(Container(11001).ListItemPosition(9).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,10) + StringCompare(Container(11001).ListItemPosition(10).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,11) + StringCompare(Container(11001).ListItemPosition(11).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,12) + StringCompare(Container(11001).ListItemPosition(12).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,13) + StringCompare(Container(11001).ListItemPosition(13).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,14) + StringCompare(Container(11001).ListItemPosition(14).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,15) + StringCompare(Container(11001).ListItemPosition(15).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,16) + StringCompare(Container(11001).ListItemPosition(16).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,17) + StringCompare(Container(11001).ListItemPosition(17).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,18) + StringCompare(Container(11001).ListItemPosition(18).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,19) + StringCompare(Container(11001).ListItemPosition(19).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,20) + StringCompare(Container(11001).ListItemPosition(20).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,21) + StringCompare(Container(11001).ListItemPosition(21).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,22) + StringCompare(Container(11001).ListItemPosition(22).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,23) + StringCompare(Container(11001).ListItemPosition(23).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,24) + StringCompare(Container(11001).ListItemPosition(24).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,25) + StringCompare(Container(11001).ListItemPosition(25).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,26) + StringCompare(Container(11001).ListItemPosition(26).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,27) + StringCompare(Container(11001).ListItemPosition(27).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,28) + StringCompare(Container(11001).ListItemPosition(28).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,29) + StringCompare(Container(11001).ListItemPosition(29).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,30) + StringCompare(Container(11001).ListItemPosition(30).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,31) + StringCompare(Container(11001).ListItemPosition(31).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,32) + StringCompare(Container(11001).ListItemPosition(32).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,33) + StringCompare(Container(11001).ListItemPosition(33).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,34) + StringCompare(Container(11001).ListItemPosition(34).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,35) + StringCompare(Container(11001).ListItemPosition(35).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,36) + StringCompare(Container(11001).ListItemPosition(36).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,37) + StringCompare(Container(11001).ListItemPosition(37).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,38) + StringCompare(Container(11001).ListItemPosition(38).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,39) + StringCompare(Container(11001).ListItemPosition(39).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,40) + StringCompare(Container(11001).ListItemPosition(40).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,41) + StringCompare(Container(11001).ListItemPosition(41).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,42) + StringCompare(Container(11001).ListItemPosition(42).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,43) + StringCompare(Container(11001).ListItemPosition(43).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,44) + StringCompare(Container(11001).ListItemPosition(44).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,45) + StringCompare(Container(11001).ListItemPosition(45).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,46) + StringCompare(Container(11001).ListItemPosition(46).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,47) + StringCompare(Container(11001).ListItemPosition(47).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,48) + StringCompare(Container(11001).ListItemPosition(48).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
+		<value condition="StringCompare(Container(11001).Position,49) + StringCompare(Container(11001).ListItemPosition(49).Property(id),ListItem.Property(id)) + Container(11001).HasFocus">true</value>
 		<value>false</value>
 </variable>
 
@@ -598,11 +595,11 @@
 	</include>
 
 
-	<!-- Layouts -------------------------------------------------------------------------------------------------------------->
+	<!-- Layouts ============================================================================================================ -->
 	<!--
-	  -- We do not want ANY specific conditionals in here; make them external
-	  -- within another include or variable if at all possible to help keep
-	  -- the actual layouts clean so they can be easily modified
+	  - We do not want ANY specific conditionals in here; make them external
+	  - within another include or variable if at all possible to help keep
+	  - the actual layouts clean so they can be easily modified
 	  -->
 	<include name="Card">
 		<texture border="10">base-rounded-half.png</texture>
@@ -639,7 +636,7 @@
 			<width>117</width>
 			<height>174</height>
 			<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-			<texture diffuse="reflection_poster.png" flipy="true" background="true">$VAR[list_item_poster_art]</texture>
+			<texture diffuse="lib-poster-reflection.png" flipy="true" background="true">$VAR[list_item_poster_art]</texture>
 		</control>
 
 		<!-- Poster border and diffuse color -->
@@ -648,11 +645,11 @@
 			<posy>18</posy>
 			<width>117</width>
 			<height>174</height>
-			<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
+			<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 			<colordiffuse>$VAR[list_item_diffuse_color]</colordiffuse>
 			<!--disabledcolordiffuse>Orange</disabledcolordiffuse-->
 			<texture diffuse="mask-poster-small.png" background="true">$VAR[list_item_poster_art]</texture>
-			<!--bordertexture>border_poster_home.png</bordertexture-->
+			<!--bordertexture>home-poster-border.png</bordertexture-->
 		</control>
 	</include>
 	<include name="ListItemPosterFocusedLayout">
@@ -663,9 +660,9 @@
 			<posy>16</posy>
 			<width>121</width>
 			<height>178</height>
-			<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
+			<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 			<colordiffuse>$VAR[color_primary_focused]</colordiffuse>
-			<texture>mask-poster-small.png</texture>
+			<texture background="true">mask-poster-small.png</texture>
 		</control>
 
 		<!-- Focused item non-diffused -->
@@ -674,13 +671,13 @@
 			<posy>18</posy>
 			<width>117</width>
 			<height>174</height>
-			<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
+			<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 			<texture diffuse="mask-poster-small.png" background="true">$VAR[list_item_poster_art]</texture>
 			<!--bordertexture>mask-poster-small.png</bordertexture-->
 		</control>
 	</include>
 
-	<!-- Titles --------------------------------------------------------------------------------------------------------------->
+	<!-- Titles ============================================================================================================= -->
 	<variable name="list_item_poster_title_1">
 		<value condition="ControlGroup(7002).HasFocus + StringCompare(ListItem.Property(id),Container(11001).ListItem(Container(11001).Position).Property(id)) + ListItem.Type(episode)">[COLOR=$VAR[color_primary_focused]]$INFO[ListItem.TVShowTitle][/COLOR]</value>
 		<value condition="ControlGroup(7002).HasFocus + StringCompare(ListItem.Property(id),Container(11001).ListItem(Container(11001).Position).Property(id)) + ListItem.Type(movie)">[COLOR=$VAR[color_primary_focused]]$INFO[ListItem.Label][/COLOR]</value>
@@ -751,7 +748,7 @@
 	</include>
 
 
-	<!-- UrbanOnDeckLayout ---------------------------------------------------------------------------------------------------->
+	<!-- Urban OnDeck Layout ================================================================================================ -->
 	<!-- TODO
 	  -
 		-  Change Focus to (0) when card info are present on deck 1
@@ -870,7 +867,7 @@
 					<posy>219</posy>
 					<width>200</width>
 					<height>200</height>
-					<texture diffuse="reflection_square.png" flipy="true">$INFO[ListItem.Thumb]</texture>
+					<texture diffuse="lib-square-reflection.png" flipy="true">$INFO[ListItem.Thumb]</texture>
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				</control>
 				<control type="image">
@@ -880,8 +877,8 @@
 					<width>200</width>
 					<height>200</height>
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-					<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
-					<bordertexture>border_square_home.png</bordertexture>
+					<texture diffuse="home-square-diffuse.png">$INFO[ListItem.Thumb]</texture>
+					<bordertexture>home-square-border.png</bordertexture>
 					<colordiffuse>FFAAAAAA</colordiffuse>
 				</control>
 				<control type="image">
@@ -891,8 +888,8 @@
 					<width>200</width>
 					<height>200</height>
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-					<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
-					<bordertexture>border_square_home.png</bordertexture>
+					<texture diffuse="home-square-diffuse.png">$INFO[ListItem.Thumb]</texture>
+					<bordertexture>home-square-border.png</bordertexture>
 				</control>
 			</control>
 		</itemlayout>
@@ -902,7 +899,7 @@
 				<posy>219</posy>
 				<width>200</width>
 				<height>200</height>
-				<texture diffuse="reflection_square.png" flipy="true">$INFO[ListItem.Thumb]</texture>
+				<texture diffuse="lib-square-reflection.png" flipy="true">$INFO[ListItem.Thumb]</texture>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 			</control>
 			<control type="image">
@@ -911,8 +908,8 @@
 				<width>200</width>
 				<height>200</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-				<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
-				<bordertexture>border_square_home.png</bordertexture>
+				<texture diffuse="home-square-diffuse.png">$INFO[ListItem.Thumb]</texture>
+				<bordertexture>home-square-border.png</bordertexture>
 			</control>
 			<control type="image">
 				<posx>1</posx>
@@ -920,7 +917,7 @@
 				<width>236</width>
 				<height>236</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-				<texture>focus_square_home.png</texture>
+				<texture>home-square-focus.png</texture>
 				<colordiffuse>Orange</colordiffuse>
 			</control>
 		</focusedlayout>
@@ -931,7 +928,7 @@
 					<posy>219</posy>
 					<width>200</width>
 					<height>200</height>
-					<texture diffuse="reflection_square.png" flipy="true">$INFO[ListItem.Thumb]</texture>
+					<texture diffuse="lib-square-reflection.png" flipy="true">$INFO[ListItem.Thumb]</texture>
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				</control>
 				<control type="image">
@@ -941,8 +938,8 @@
 					<width>200</width>
 					<height>200</height>
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-					<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
-					<bordertexture>border_square_home.png</bordertexture>
+					<texture diffuse="home-square-diffuse.png">$INFO[ListItem.Thumb]</texture>
+					<bordertexture>home-square-border.png</bordertexture>
 					<colordiffuse>FFAAAAAA</colordiffuse>
 				</control>
 				<control type="image">
@@ -952,8 +949,8 @@
 					<width>200</width>
 					<height>200</height>
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-					<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
-					<bordertexture>border_square_home.png</bordertexture>
+					<texture diffuse="home-square-diffuse.png">$INFO[ListItem.Thumb]</texture>
+					<bordertexture>home-square-border.png</bordertexture>
 				</control>
 				<control type="label">
 					<posx>119</posx>
@@ -985,7 +982,7 @@
 				<posy>219</posy>
 				<width>200</width>
 				<height>200</height>
-				<texture diffuse="reflection_square.png" flipy="true">$INFO[ListItem.Thumb]</texture>
+				<texture diffuse="lib-square-reflection.png" flipy="true">$INFO[ListItem.Thumb]</texture>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 			</control>
 			<control type="image">
@@ -994,8 +991,8 @@
 				<width>200</width>
 				<height>200</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-				<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
-				<bordertexture>border_square_home.png</bordertexture>
+				<texture diffuse="home-square-diffuse.png">$INFO[ListItem.Thumb]</texture>
+				<bordertexture>home-square-border.png</bordertexture>
 			</control>
 			<control type="image">
 				<posx>1</posx>
@@ -1003,7 +1000,7 @@
 				<width>236</width>
 				<height>236</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-				<texture>focus_square_home.png</texture>
+				<texture>home-square-focus.png</texture>
 				<colordiffuse>Orange</colordiffuse>
 			</control>
 			<control type="label">
@@ -1055,7 +1052,7 @@
 					<posy>219</posy>
 					<width>134</width>
 					<height>200</height>
-					<texture diffuse="reflection_poster.png" flipy="true" background="true">$INFO[ListItem.Thumb]</texture>
+					<texture diffuse="lib-poster-reflection.png" flipy="true" background="true">$INFO[ListItem.Thumb]</texture>
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				</control>
 				<control type="image">
@@ -1064,9 +1061,9 @@
 					<posy>19</posy>
 					<width>134</width>
 					<height>200</height>
-					<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
-					<texture diffuse="diffuse_poster_home.png">$INFO[ListItem.Thumb]</texture>
-					<bordertexture>border_poster_home.png</bordertexture>
+					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
+					<texture diffuse="home-poster-diffuse.png" background="true">$INFO[ListItem.Thumb]</texture>
+					<bordertexture>home-poster-border.png</bordertexture>
 					<colordiffuse>FFAAAAAA</colordiffuse>
 				</control>
 				<control type="image">
@@ -1075,9 +1072,9 @@
 					<posy>19</posy>
 					<width>134</width>
 					<height>200</height>
-					<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
-					<texture diffuse="diffuse_poster_home.png">$INFO[ListItem.Thumb]</texture>
-					<bordertexture>border_poster_home.png</bordertexture>
+					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
+					<texture diffuse="home-poster-diffuse.png" background="true">$INFO[ListItem.Thumb]</texture>
+					<bordertexture>home-poster-border.png</bordertexture>
 				</control>
 				<control type="label">
 					<posx>86</posx>
@@ -1108,7 +1105,7 @@
 					<posy>219</posy>
 					<width>134</width>
 					<height>200</height>
-					<texture diffuse="reflection_poster.png" flipy="true" background="true">$INFO[ListItem.GrandparentThumb]</texture>
+					<texture diffuse="lib-poster-reflection.png" flipy="true" background="true">$INFO[ListItem.GrandparentThumb]</texture>
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				</control>
 				<control type="image">
@@ -1117,9 +1114,9 @@
 					<posy>19</posy>
 					<width>134</width>
 					<height>200</height>
-					<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
-					<texture diffuse="diffuse_poster_home.png">$INFO[ListItem.GrandparentThumb]</texture>
-					<bordertexture>border_poster_home.png</bordertexture>
+					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
+					<texture diffuse="home-poster-diffuse.png" background="true">$INFO[ListItem.GrandparentThumb]</texture>
+					<bordertexture>home-poster-border.png</bordertexture>
 					<colordiffuse>FFAAAAAA</colordiffuse>
 				</control>
 				<control type="image">
@@ -1128,9 +1125,9 @@
 					<posy>19</posy>
 					<width>134</width>
 					<height>200</height>
-					<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
-					<texture diffuse="diffuse_poster_home.png">$INFO[ListItem.GrandparentThumb]</texture>
-					<bordertexture>border_poster_home.png</bordertexture>
+					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
+					<texture diffuse="home-poster-diffuse.png" background="true">$INFO[ListItem.GrandparentThumb]</texture>
+					<bordertexture>home-poster-border.png</bordertexture>
 				</control>
 				<control type="label">
 					<posx>86</posx>
@@ -1171,7 +1168,7 @@
 				<posy>219</posy>
 				<width>134</width>
 				<height>200</height>
-				<texture diffuse="reflection_poster.png" flipy="true" background="true">$INFO[ListItem.Thumb]</texture>
+				<texture diffuse="lib-poster-reflection.png" flipy="true" background="true">$INFO[ListItem.Thumb]</texture>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 			</control>
 			<control type="image">
@@ -1179,9 +1176,9 @@
 				<posy>19</posy>
 				<width>134</width>
 				<height>200</height>
-				<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
-				<texture diffuse="diffuse_poster_home.png">$INFO[ListItem.Thumb]</texture>
-				<bordertexture>border_poster_home.png</bordertexture>
+				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
+				<texture diffuse="home-poster-diffuse.png" background="true">$INFO[ListItem.Thumb]</texture>
+				<bordertexture>home-poster-border.png</bordertexture>
 			</control>
 			<control type="image">
 				<posx>1</posx>
@@ -1189,7 +1186,7 @@
 				<width>170</width>
 				<height>236</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-				<texture>focus_poster_home.png</texture>
+				<texture>home-poster-focus.png</texture>
 				<colordiffuse>Orange</colordiffuse>
 			</control>
 			<control type="label">
@@ -1223,7 +1220,7 @@
 				<posy>219</posy>
 				<width>134</width>
 				<height>200</height>
-				<texture diffuse="reflection_poster.png" flipy="true" background="true">$INFO[ListItem.GrandparentThumb]</texture>
+				<texture diffuse="lib-poster-reflection.png" flipy="true" background="true">$INFO[ListItem.GrandparentThumb]</texture>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 			</control>
 			<control type="image">
@@ -1231,9 +1228,9 @@
 				<posy>19</posy>
 				<width>134</width>
 				<height>200</height>
-				<aspectratio scalediffuse="false" align="center" background="true">scale</aspectratio>
-				<texture diffuse="diffuse_poster_home.png">$INFO[ListItem.GrandparentThumb]</texture>
-				<bordertexture>border_poster_home.png</bordertexture>
+				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
+				<texture diffuse="home-poster-diffuse.png" background="true">$INFO[ListItem.GrandparentThumb]</texture>
+				<bordertexture>home-poster-border.png</bordertexture>
 			</control>
 			<control type="image">
 				<posx>1</posx>
@@ -1241,7 +1238,7 @@
 				<width>170</width>
 				<height>236</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-				<texture>focus_poster_home.png</texture>
+				<texture>home-poster-focus.png</texture>
 				<colordiffuse>Orange</colordiffuse>
 			</control>
 			<control type="label">
@@ -1276,7 +1273,7 @@
 					<posy>219</posy>
 					<width>200</width>
 					<height>200</height>
-					<texture diffuse="reflection_square.png" flipy="true">$INFO[ListItem.Thumb]</texture>
+					<texture diffuse="lib-square-reflection.png" flipy="true">$INFO[ListItem.Thumb]</texture>
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				</control>
 				<control type="image">
@@ -1286,8 +1283,8 @@
 					<width>200</width>
 					<height>200</height>
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-					<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
-					<bordertexture>border_square_home.png</bordertexture>
+					<texture diffuse="home-square-diffuse.png">$INFO[ListItem.Thumb]</texture>
+					<bordertexture>home-square-border.png</bordertexture>
 					<colordiffuse>FFAAAAAA</colordiffuse>
 				</control>
 				<control type="image">
@@ -1297,8 +1294,8 @@
 					<width>200</width>
 					<height>200</height>
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-					<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
-					<bordertexture>border_square_home.png</bordertexture>
+					<texture diffuse="home-square-diffuse.png">$INFO[ListItem.Thumb]</texture>
+					<bordertexture>home-square-border.png</bordertexture>
 				</control>
 			</control>
 		</itemlayout>
@@ -1308,7 +1305,7 @@
 				<posy>219</posy>
 				<width>200</width>
 				<height>200</height>
-				<texture diffuse="reflection_square.png" flipy="true">$INFO[ListItem.Thumb]</texture>
+				<texture diffuse="lib-square-reflection.png" flipy="true">$INFO[ListItem.Thumb]</texture>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 			</control>
 			<control type="image">
@@ -1317,8 +1314,8 @@
 				<width>200</width>
 				<height>200</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-				<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
-				<bordertexture>border_square_home.png</bordertexture>
+				<texture diffuse="home-square-diffuse.png">$INFO[ListItem.Thumb]</texture>
+				<bordertexture>home-square-border.png</bordertexture>
 			</control>
 			<control type="image">
 				<posx>1</posx>
@@ -1326,7 +1323,7 @@
 				<width>236</width>
 				<height>236</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-				<texture>focus_square_home.png</texture>
+				<texture>home-square-focus.png</texture>
 				<colordiffuse>Orange</colordiffuse>
 			</control>
 		</focusedlayout>
@@ -1337,7 +1334,7 @@
 					<posy>219</posy>
 					<width>200</width>
 					<height>200</height>
-					<texture diffuse="reflection_square.png" flipy="true">$INFO[ListItem.Thumb]</texture>
+					<texture diffuse="lib-square-reflection.png" flipy="true">$INFO[ListItem.Thumb]</texture>
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 				</control>
 				<control type="image">
@@ -1347,8 +1344,8 @@
 					<width>200</width>
 					<height>200</height>
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-					<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
-					<bordertexture>border_square_home.png</bordertexture>
+					<texture diffuse="home-square-diffuse.png">$INFO[ListItem.Thumb]</texture>
+					<bordertexture>home-square-border.png</bordertexture>
 					<colordiffuse>FFAAAAAA</colordiffuse>
 				</control>
 				<control type="image">
@@ -1358,8 +1355,8 @@
 					<width>200</width>
 					<height>200</height>
 					<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-					<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
-					<bordertexture>border_square_home.png</bordertexture>
+					<texture diffuse="home-square-diffuse.png">$INFO[ListItem.Thumb]</texture>
+					<bordertexture>home-square-border.png</bordertexture>
 				</control>
 				<control type="label">
 					<posx>119</posx>
@@ -1391,7 +1388,7 @@
 				<posy>219</posy>
 				<width>200</width>
 				<height>200</height>
-				<texture diffuse="reflection_square.png" flipy="true">$INFO[ListItem.Thumb]</texture>
+				<texture diffuse="lib-square-reflection.png" flipy="true">$INFO[ListItem.Thumb]</texture>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 			</control>
 			<control type="image">
@@ -1400,8 +1397,8 @@
 				<width>200</width>
 				<height>200</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-				<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
-				<bordertexture>border_square_home.png</bordertexture>
+				<texture diffuse="home-square-diffuse.png">$INFO[ListItem.Thumb]</texture>
+				<bordertexture>home-square-border.png</bordertexture>
 			</control>
 			<control type="image">
 				<posx>1</posx>
@@ -1409,7 +1406,7 @@
 				<width>236</width>
 				<height>236</height>
 				<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-				<texture>focus_square_home.png</texture>
+				<texture>home-square-focus.png</texture>
 				<colordiffuse>Orange</colordiffuse>
 			</control>
 			<control type="label">
@@ -1462,8 +1459,8 @@
 			<control type="list" id="11003">
 				<visible allowhiddenfocus="false">false</visible>
 				<orientation>horizontal</orientation>
-				<onright>-</onright>
-				<onleft>-</onleft>
+				<onright>noop</onright>
+				<onleft>noop</onleft>
 				<ondown>300</ondown>
 				<onup>300</onup>
 				<width>1190</width>
@@ -1477,7 +1474,7 @@
 							<posy>219</posy>
 							<width>200</width>
 							<height>200</height>
-							<texture diffuse="reflection_square.png" flipy="true">$INFO[ListItem.Thumb]</texture>
+							<texture diffuse="lib-square-reflection.png" flipy="true">$INFO[ListItem.Thumb]</texture>
 							<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 						</control>
 						<control type="image">
@@ -1487,8 +1484,8 @@
 							<width>200</width>
 							<height>200</height>
 							<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-							<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
-							<bordertexture>border_square_home.png</bordertexture>
+							<texture diffuse="home-square-diffuse.png">$INFO[ListItem.Thumb]</texture>
+							<bordertexture>home-square-border.png</bordertexture>
 							<colordiffuse>FFAAAAAA</colordiffuse>
 						</control>
 						<control type="image">
@@ -1498,8 +1495,8 @@
 							<width>200</width>
 							<height>200</height>
 							<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-							<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
-							<bordertexture>border_square_home.png</bordertexture>
+							<texture diffuse="home-square-diffuse.png">$INFO[ListItem.Thumb]</texture>
+							<bordertexture>home-square-border.png</bordertexture>
 						</control>
 						<control type="label">
 							<posx>119</posx>
@@ -1531,7 +1528,7 @@
 						<posy>219</posy>
 						<width>200</width>
 						<height>200</height>
-						<texture diffuse="reflection_square.png" flipy="true">$INFO[ListItem.Thumb]</texture>
+						<texture diffuse="lib-square-reflection.png" flipy="true">$INFO[ListItem.Thumb]</texture>
 						<aspectratio scalediffuse="false" align="center">scale</aspectratio>
 					</control>
 					<control type="image">
@@ -1540,8 +1537,8 @@
 						<width>200</width>
 						<height>200</height>
 						<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-						<texture diffuse="diffuse_square_home.png">$INFO[ListItem.Thumb]</texture>
-						<bordertexture>border_square_home.png</bordertexture>
+						<texture diffuse="home-square-diffuse.png">$INFO[ListItem.Thumb]</texture>
+						<bordertexture>home-square-border.png</bordertexture>
 					</control>
 					<control type="image">
 						<posx>1</posx>
@@ -1549,7 +1546,7 @@
 						<width>236</width>
 						<height>236</height>
 						<aspectratio scalediffuse="false" align="center">scale</aspectratio>
-						<texture>focus_square_home.png</texture>
+						<texture>home-square-focus.png</texture>
 					</control>
 					<control type="label">
 						<posx>119</posx>
@@ -1633,7 +1630,7 @@
 					<posy>24</posy>
 					<width>150</width>
 					<height>99</height>
-					<texture>thumb_background.png</texture>
+					<texture>bg-thumb.png</texture>
 				</control>
 				<control type="image">
 					<description>Poster Thumb Reflection</description>
@@ -1641,7 +1638,7 @@
 					<posy>122</posy>
 					<width>150</width>
 					<height>99</height>
-					<texture background="true" diffuse="reflection_episode.png" flipy="true">$INFO[Container(11001).ListItem(0).Thumb]</texture>
+					<texture background="true" diffuse="lib-episode-reflection.png" flipy="true">$INFO[Container(11001).ListItem(0).Thumb]</texture>
 					<aspectratio scalediffuse="false">scale</aspectratio>
 					<fadetime>1</fadetime>
 				</control>
@@ -1651,9 +1648,9 @@
 					<posy>24</posy>
 					<width>150</width>
 					<height>99</height>
-					<texture background="true" diffuse="diffuse_episode.png">$INFO[Container(11001).ListItem(0).Thumb]</texture>
+					<texture background="true" diffuse="lib-episode-diffuse.png">$INFO[Container(11001).ListItem(0).Thumb]</texture>
 					<aspectratio scalediffuse="false">scale</aspectratio>
-					<bordertexture>border_episode.png</bordertexture>
+					<bordertexture>lib-episode-border.png</bordertexture>
 					<fadetime>1</fadetime>
 				</control>
 			</control>
@@ -1667,7 +1664,7 @@
 					<posy>-15</posy>
 					<width>114</width>
 					<height>171</height>
-					<texture>thumb_background.png</texture>
+					<texture>bg-thumb.png</texture>
 				</control>
 				<control type="image">
 					<description>Poster Thumb Reflection</description>
@@ -1675,7 +1672,7 @@
 					<posy>155</posy>
 					<width>114</width>
 					<height>171</height>
-					<texture background="true" diffuse="reflection_poster.png" flipy="true">$INFO[Container(11001).ListItem(0).Thumb]</texture>
+					<texture background="true" diffuse="lib-poster-reflection.png" flipy="true">$INFO[Container(11001).ListItem(0).Thumb]</texture>
 					<aspectratio scalediffuse="false">scale</aspectratio>
 					<fadetime>1</fadetime>
 				</control>
@@ -1685,9 +1682,9 @@
 					<posy>-15</posy>
 					<width>114</width>
 					<height>171</height>
-					<texture background="true" diffuse="diffuse_poster.png">$INFO[Container(11001).ListItem(0).Thumb]</texture>
+					<texture background="true" diffuse="lib-poster-diffuse.png">$INFO[Container(11001).ListItem(0).Thumb]</texture>
 					<aspectratio scalediffuse="false">scale</aspectratio>
-					<bordertexture>border_episode.png</bordertexture>
+					<bordertexture>lib-episode-border.png</bordertexture>
 					<fadetime>1</fadetime>
 				</control>
 			</control>
@@ -1705,13 +1702,13 @@
 			<width>501</width>
 			<height>222</height>
 
-			<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+			<!-- ==================================================================================================== -->
 			<!-- Info -->
-			<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+			<!-- ==================================================================================================== -->
 			<!-- Movies, TvShow, Seasons or Episodes Info -->
 			<control type="group">
 				<visible>[ListItem.Type(movie) | ListItem.Type(episode)]</visible>
-				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+				<!-- ============================================================================================ -->
 				<control type="group">
 					<description>Title and Image Ratings</description>
 					<posx>0</posx>  <!--      186 orig          -->
@@ -1750,7 +1747,7 @@
 						<info>ListItem.StarRating</info>
 					</control>
 				</control>
-				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+				<!-- ============================================================================================ -->
 				<control type="group">
 					<posx>0</posx>
 					<posy>24</posy>
@@ -1783,7 +1780,7 @@
 						<label>$VAR[text_rating]</label>
 					</control>
 				</control>
-				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+				<!-- ============================================================================================ -->
 				<!-- Under-rule -->
 				<control type="image">
 					<posx>0</posx>
@@ -1793,7 +1790,7 @@
 					<texture>white.png</texture>
 					<colordiffuse>$VAR[color_primary_focused]</colordiffuse>
 				</control>
-				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+				<!-- ============================================================================================ -->
 				<!-- Plot outline -->
 				<control type="group">
 					<include>VisibleStatementFor11001ListitemFocusedItem</include>
@@ -1825,11 +1822,10 @@
 						<font>plot1</font>
 						<textcolor>Gray</textcolor>
 						<shadowcolor>Black</shadowcolor>
-						<scroll>false</scroll>
 						<label>$INFO[ListItem.Plot]</label>
 					</control>
 				</control>
-				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+				<!-- ============================================================================================ -->
 				<!-- Media Flags & duration-->
 				<control type="group">
 					<posx>0</posx>
@@ -1883,21 +1879,21 @@
 				<description>Title</description>
 				<width>923</width>
 				<height>201</height>
-				<texture border="0,1,0,11">OSD/OSDBackground.png</texture>
+				<texture border="0,1,0,11">osd-bg.png</texture>
 			</control>
 
 			<!-- Poster art (thumbs) -->
 			<include>InfoArt</include>
 
-			<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+			<!-- ==================================================================================================== -->
 			<!-- Info -->
-			<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+			<!-- ==================================================================================================== -->
 			<!-- Movies, TvShow, Seasons or Episodes Info -->
 			<control type="group">
 				<visible>[Container(11001).ListItem(0).Type(movie) | Container(11001).ListItem(0).Type(episode)]</visible>
 				<width>710</width>
 				<height>126</height>
-				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+				<!-- ============================================================================================ -->
 				<control type="group">
 					<description>Title and Image Ratings</description>
 					<posx>186</posx>
@@ -1934,7 +1930,7 @@
 						<info>Container(11001).ListItem(0).StarRating</info>
 					</control>
 				</control>
-				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+				<!-- ============================================================================================ -->
 				<control type="group">
 					<posx>186</posx>
 					<posy>30</posy>
@@ -1967,7 +1963,7 @@
 						<label>$VAR[text_rating]</label>
 					</control>
 				</control>
-				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+				<!-- ============================================================================================ -->
 				<!-- Plot outline -->
 				<control type="textbox" id="8">
 					<visible>!IsEmpty(Container(11001).ListItem(0).PlotOutline)</visible>
@@ -1983,7 +1979,7 @@
 					<autoscroll delay="10000" time="3000" repeat="10000"/>
 					<label>$INFO[Container(11001).ListItem(0).Plot]</label>
 				</control>
-				<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+				<!-- ============================================================================================ -->
 				<!-- Media Flags & duration-->
 				<control type="group">
 					<posx>186</posx>
@@ -2023,7 +2019,7 @@
 
 	<!--
 		Some Properties that exist but not using yet
-		--------------------------------------------
+		============================================
 		<value>View Offset: $INFO[Container(11001).ListItem(0).Property(viewOffset)]</value>
 		<value>ratingKey: $INFO[Container(11001).ListItem(0).Property(ratingKey)]</value>
 
@@ -2035,11 +2031,11 @@
 		<value>sectionPath: $INFO[Container(300).ListItem(0).Property(sectionPath)]</value>
 
 		Dunno if they exist or how to access since they are boolean
-		-----------------------------------------------------------
+		===========================================================
 		<value condition="Container(11001).ListItem(0).Property(HasWatchedState)">HasWatchedState: True</value>
 
 		Don't Seem to exist
-		-------------------
+		===================
 		<value condition="Container(300).ListItem(0).DirectoryType(Movie)">PlexDirectoryType: movie</value>
 		<value condition="Container(300).ListItem(0).Type(episode)">episode</value>
 		<value condition="Container(300).ListItem(0).Type(movie)">movie</value>
